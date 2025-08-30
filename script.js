@@ -129,7 +129,7 @@ document.querySelectorAll('.add-to-cart').forEach(button => {
         const productNameElement = this.parentElement.querySelector('h3');
         const productName = productNameElement ? productNameElement.textContent : 'Ürün';
         const quantityInput = this.parentElement.querySelector('.quantity-input');
-        const quantity = quantityInput ? parseFloat(quantityInput.value) : 1;
+        let quantity = quantityInput ? parseFloat(quantityInput.value) : 1;
         
         // Miktar kontrolü ve yuvarlama
         if (isNaN(quantity) || quantity < 1) {
