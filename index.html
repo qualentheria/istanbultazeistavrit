@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>İstanbul Taze İstavrit - Denizden Sofranıza</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigasyon -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <span class="fish-icon">🌊</span>
+                <span>İstanbul Taze İstavrit</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#anasayfa" class="nav-link">Ana Sayfa</a></li>
+                <li><a href="#urunler" class="nav-link">Ürünlerimiz</a></li>
+                <li><a href="#hakkimizda" class="nav-link">Hakkımızda</a></li>
+                <li><a href="#iletisim" class="nav-link">İletişim</a></li>
+                <li><a href="#" class="nav-link" id="cartButton">Sepet (<span id="cartCount">0</span>)</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Bölümü -->
+    <section id="anasayfa" class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Her Gün <span class="text-gradient">Taze İstavrit</span></h1>
+            <p class="hero-subtitle">Denizden sofranıza hızlı teslimat</p>
+            <div class="hero-buttons">
+                <a href="#urunler" class="cta-button primary">
+                    <span>Hemen Alışveriş Yap</span>
+                </a>
+                <a href="#iletisim" class="cta-button secondary">
+                    <span class="button-icon">📞</span> 
+                    <span>İletişime Geç</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Özellikler -->
+    <section class="features" style="margin-top: -2px;">
+        <div class="container">
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon-wrapper">
+                        <div class="feature-icon">🎣</div>
+                    </div>
+                    <h3>Günlük Avlanır</h3>
+                    <p>Her sabah taze avlanan istavritler aynı gün teslim edilir</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon-wrapper">
+                        <div class="feature-icon">🚚</div>
+                    </div>
+                    <h3>Hızlı Teslimat</h3>
+                    <p>Siparişiniz aynı gün kapınıza teslim edilir</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ürünler -->
+    <section id="urunler" class="products">
+        <div class="container">
+            <h2 class="section-title">Ürünlerimiz</h2>
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1510130387422-82bed34b37e9?w=600&h=400&fit=crop" alt="Taze İstavrit">
+                        <span class="badge">Günlük Taze</span>
+                    </div>
+                    <div class="product-info">
+                        <h3>Taze İstavrit</h3>
+                        <p class="product-description">Marmara Denizi'nden günlük avlanan taze istavrit</p>
+                        <div class="price">
+                            <span class="amount">₺450</span>
+                            <span class="unit">/ kg</span>
+                        </div>
+                        <div class="quantity-controls">
+                            <button class="qty-btn minus" onclick="changeQuantity('istavrit', -0.1)">-</button>
+                            <input type="number" id="qty-istavrit" class="qty-input" value="1" min="1" max="5" step="0.1" onchange="validateInput('istavrit')" onkeyup="validateInput('istavrit')">
+                            <span class="qty-unit">kg</span>
+                            <button class="qty-btn plus" onclick="changeQuantity('istavrit', 0.1)">+</button>
+                        </div>
+                        <button class="add-to-cart" data-product="istavrit" data-price="450">
+                            <span>Sepete Ekle</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hakkımızda -->
+    <section id="hakkimizda" class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Denizden Sofranıza</h2>
+                    <p>Marmara Denizi'nden günlük avlanan en taze istavritleri sofralarınıza ulaştırıyoruz.</p>
+                    <p>Olta balıkçılığı ile her gün sabahın ilk ışıklarıyla avladığımız istavritler aynı gün içinde kapınıza kadar gelir.</p>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?w=600" alt="Balıkçı Teknesi">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- İletişim -->
+    <section id="iletisim" class="contact">
+        <div class="container">
+            <h2 class="section-title">İletişim</h2>
+            <div class="contact-wrapper">
+                <div class="contact-card whatsapp-card">
+                    <div class="contact-icon-wrapper">
+                        <i class="fab fa-whatsapp"></i>
+                    </div>
+                    <h3>WhatsApp İletişim</h3>
+                    <p class="contact-number">0539 983 49 53</p>
+                    <a href="https://wa.me/905399834953" class="whatsapp-cta" target="_blank">
+                        <i class="fab fa-whatsapp"></i>
+                        <span>Hemen Mesaj Gönder</span>
+                    </a>
+                </div>
+                <div class="contact-info-grid">
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <h4>Adresimiz</h4>
+                        <p>İstanbul, Beyoğlu</p>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <h4>Çalışma Saatleri</h4>
+                        <p class="hours">
+                            <span class="day">Hafta İçi:</span> 10:00 - 22:00<br>
+                            <span class="day">Hafta Sonu:</span> <span class="closed">Kapalı</span>
+                        </p>
+                    </div>
+                    <p style="text-align: center; color: #666;">Siparişleriniz ve sorularınız için bize WhatsApp üzerinden ulaşabilirsiniz.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sepet Modal -->
+    <div id="cartModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Sepetiniz</h2>
+            <div id="cartItems"></div>
+            <div class="cart-total">
+                <strong>Toplam: </strong>
+                <span id="totalPrice">₺0.00</span>
+            </div>
+            <button class="checkout-button" onclick="sendToWhatsApp()">WhatsApp ile Sipariş Ver</button>
+        </div>
+    </div>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="fish-icon">🌊</span>
+                    <span>Taze İstavrit</span>
+                </div>
+                <p>&copy; 2025 İstanbul Taze İstavrit. Tüm hakları saklıdır.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
