@@ -1,3 +1,53 @@
+// Tema yönetimi
+const themeToggle = document.getElementById('themeToggle');
+const themeIcon = document.getElementById('themeIcon');
+const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+
+// Tema fonksiyonları
+function setTheme(theme) {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+    updateThemeIcon(theme);
+}
+
+function updateThemeIcon(theme) {
+    if (theme === 'dark') {
+        themeIcon.classList.remove('fa-moon');
+        themeIcon.classList.add('fa-sun');
+    } else {
+        themeIcon.classList.remove('fa-sun');
+        themeIcon.classList.add('fa-moon');
+    }
+}
+
+function initTheme() {
+    // Önce localStorage'dan kontrol et
+    const savedTheme = localStorage.getItem('theme');
+    
+    if (savedTheme) {
+        setTheme(savedTheme);
+    } else {
+        // Sistem temasını algıla
+        const systemTheme = prefersDarkScheme.matches ? 'dark' : 'light';
+        setTheme(systemTheme);
+    }
+}
+
+// Tema değiştirme butonu
+themeToggle.addEventListener('click', () => {
+    const currentTheme = document.documentElement.getAttribute('data-theme');
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    setTheme(newTheme);
+});
+
+// Sistem teması değiştiğinde otomatik güncelle (eğer kullanıcı manuel seçim yapmamışsa)
+prefersDarkScheme.addEventListener('change', (e) => {
+    if (!localStorage.getItem('theme')) {
+        const newTheme = e.matches ? 'dark' : 'light';
+        setTheme(newTheme);
+    }
+});
+
 // Sepet yönetimi
 let cart = JSON.parse(localStorage.getItem('cart')) || [];
 let cartModal = document.getElementById('cartModal');
@@ -5,8 +55,9 @@ let closeModal = document.querySelector('.close');
 let cartButton = document.getElementById('cartButton');
 let cartCount = document.getElementById('cartCount');
 
-// Sayfa yüklendiğinde sepeti güncelle
+// Sayfa yüklendiğinde sepeti ve temayı güncelle
 window.addEventListener('DOMContentLoaded', () => {
+    initTheme();
     updateCartBadge();
 });
 
@@ -14,21 +65,23 @@ window.addEventListener('DOMContentLoaded', () => {
 const hamburger = document.querySelector('.hamburger');
 const navMenu = document.querySelector('.nav-menu');
 
-hamburger.addEventListener('click', () => {
-    navMenu.classList.toggle('active');
-    
-    // Hamburger animasyonu
-    const spans = hamburger.querySelectorAll('span');
-    if (navMenu.classList.contains('active')) {
-        spans[0].style.transform = 'rotate(-45deg) translate(-5px, 6px)';
-        spans[1].style.opacity = '0';
-        spans[2].style.transform = 'rotate(45deg) translate(-5px, -6px)';
-    } else {
-        spans[0].style.transform = '';
-        spans[1].style.opacity = '1';
-        spans[2].style.transform = '';
-    }
-});
+if (hamburger) {
+    hamburger.addEventListener('click', () => {
+        navMenu.classList.toggle('active');
+        
+        // Hamburger animasyonu
+        const spans = hamburger.querySelectorAll('span');
+        if (navMenu.classList.contains('active')) {
+            spans[0].style.transform = 'rotate(-45deg) translate(-5px, 6px)';
+            spans[1].style.opacity = '0';
+            spans[2].style.transform = 'rotate(45deg) translate(-5px, -6px)';
+        } else {
+            spans[0].style.transform = '';
+            spans[1].style.opacity = '1';
+            spans[2].style.transform = '';
+        }
+    });
+}
 
 // Navigasyon linkleri tıklandığında menüyü kapat
 document.querySelectorAll('.nav-link').forEach(link => {
