@@ -34,19 +34,23 @@ function initTheme() {
 }
 
 // Tema değiştirme butonu
-themeToggle.addEventListener('click', () => {
-    const currentTheme = document.documentElement.getAttribute('data-theme');
-    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-    setTheme(newTheme);
-});
+if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        setTheme(newTheme);
+    });
+}
 
 // Sistem teması değiştiğinde otomatik güncelle (eğer kullanıcı manuel seçim yapmamışsa)
-prefersDarkScheme.addEventListener('change', (e) => {
-    if (!localStorage.getItem('theme')) {
-        const newTheme = e.matches ? 'dark' : 'light';
-        setTheme(newTheme);
-    }
-});
+if (prefersDarkScheme && prefersDarkScheme.addEventListener) {
+    prefersDarkScheme.addEventListener('change', (e) => {
+        if (!localStorage.getItem('theme')) {
+            const newTheme = e.matches ? 'dark' : 'light';
+            setTheme(newTheme);
+        }
+    });
+}
 
 // Sepet yönetimi
 let cart = JSON.parse(localStorage.getItem('cart')) || [];
@@ -86,24 +90,33 @@ if (hamburger) {
 // Navigasyon linkleri tıklandığında menüyü kapat
 document.querySelectorAll('.nav-link').forEach(link => {
     link.addEventListener('click', () => {
-        navMenu.classList.remove('active');
-        const spans = hamburger.querySelectorAll('span');
-        spans[0].style.transform = '';
-        spans[1].style.opacity = '1';
-        spans[2].style.transform = '';
+        if (navMenu) {
+            navMenu.classList.remove('active');
+        }
+        if (hamburger) {
+            const spans = hamburger.querySelectorAll('span');
+            if (spans.length >= 3) {
+                spans[0].style.transform = '';
+                spans[1].style.opacity = '';
+                spans[2].style.transform = '';
+            }
+        }
     });
 });
 
 // Smooth scroll navigasyon
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
+        const href = this.getAttribute('href');
+        if (href && href !== '#') {
+            e.preventDefault();
+            const target = document.querySelector(href);
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
         }
     });
 });
@@ -113,9 +126,10 @@ document.querySelectorAll('.add-to-cart').forEach(button => {
     button.addEventListener('click', function() {
         const product = this.dataset.product;
         const price = parseFloat(this.dataset.price);
-        const productName = this.parentElement.querySelector('h3').textContent;
-        const quantityInput = document.getElementById(`qty-${product}`);
-        let quantity = parseFloat(quantityInput.value);
+        const productNameElement = this.parentElement.querySelector('h3');
+        const productName = productNameElement ? productNameElement.textContent : 'Ürün';
+        const quantityInput = this.parentElement.querySelector('.quantity-input');
+        const quantity = quantityInput ? parseFloat(quantityInput.value) : 1;
         
         // Miktar kontrolü ve yuvarlama
         if (isNaN(quantity) || quantity < 1) {
@@ -223,9 +237,11 @@ if (cartButton) {
 }
 
 // Modal kapat
-closeModal.addEventListener('click', () => {
-    cartModal.style.display = 'none';
-});
+if (closeModal) {
+    closeModal.addEventListener('click', () => {
+        cartModal.style.display = 'none';
+    });
+}
 
 // Modal dışına tıklandığında kapat
 window.addEventListener('click', (e) => {
@@ -426,28 +442,34 @@ function sendToWhatsApp() {
 }
 
 // İletişim formu
-document.querySelector('.contact-form').addEventListener('submit', (e) => {
-    e.preventDefault();
-    
-    // Form verilerini al
-    const formData = new FormData(e.target);
-    
-    // Normalde burada form verilerini sunucuya gönderirsiniz
-    console.log('Form gönderildi:', Object.fromEntries(formData));
-    
-    // Başarı mesajı göster
-    showNotification('Mesajınız başarıyla gönderildi!');
-    
-    // Formu temizle
-    e.target.reset();
-});
+const contactForm = document.querySelector('.contact-form');
+if (contactForm) {
+    contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        // Form verilerini al
+        const formData = new FormData(e.target);
+        
+        // Bildirim göster
+        showNotification('Mesajınız başarıyla gönderildi! En kısa sürede size dönüş yapacağız.', 'success');
+        
+        // Formu temizle
+        e.target.reset();
+    });
+}
 
 // Hero CTA butonu
-document.querySelector('.cta-button').addEventListener('click', () => {
-    document.querySelector('#urunler').scrollIntoView({
-        behavior: 'smooth'
+const ctaButton = document.querySelector('.cta-button');
+if (ctaButton) {
+    ctaButton.addEventListener('click', () => {
+        const urunlerSection = document.querySelector('#urunler');
+        if (urunlerSection) {
+            urunlerSection.scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
     });
-});
+}
 
 // Scroll animasyonları
 const observerOptions = {
@@ -474,19 +496,19 @@ document.querySelectorAll('.feature-card, .product-card, .stat').forEach(el => {
 let lastScroll = 0;
 const navbar = document.querySelector('.navbar');
 
-window.addEventListener('scroll', () => {
-    const currentScroll = window.pageYOffset;
-    
-    if (currentScroll > 100) {
-        navbar.style.background = 'linear-gradient(135deg, rgba(0, 119, 190, 0.95), rgba(0, 168, 204, 0.95))';
-        navbar.style.backdropFilter = 'blur(10px)';
-    } else {
-        navbar.style.background = '';
-        navbar.style.backdropFilter = '';
-    }
-    
-    lastScroll = currentScroll;
-});
+if (navbar) {
+    window.addEventListener('scroll', () => {
+        const currentScroll = window.pageYOffset;
+        
+        if (currentScroll > 100) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+        
+        lastScroll = currentScroll;
+    });
+}
 
 // Sayfa yüklendiğinde
 document.addEventListener('DOMContentLoaded', () => {

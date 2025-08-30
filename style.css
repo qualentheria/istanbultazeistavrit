@@ -138,6 +138,10 @@ body {
     gap: 2rem;
 }
 
+.nav-menu li {
+    list-style: none;
+}
+
 .nav-link {
     color: var(--text-primary);
     text-decoration: none;
@@ -168,6 +172,10 @@ body {
     display: none;
     flex-direction: column;
     cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+    z-index: 1001;
 }
 
 .hamburger span {
@@ -1441,6 +1449,16 @@ body {
     
     .product-card {
         margin: 0 10px;
+        padding: 15px;
+    }
+    
+    .product-image {
+        height: 200px;
+    }
+    
+    .price {
+        padding: 15px;
+        font-size: 1.1rem;
     }
     
     .quantity-controls {
@@ -1450,6 +1468,18 @@ body {
     
     .quantity-input {
         width: 80px;
+        font-size: 1rem;
+    }
+    
+    .qty-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+    }
+    
+    .add-to-cart {
+        padding: 12px 20px;
+        font-size: 0.95rem;
     }
     
     .footer-content {
@@ -1475,6 +1505,75 @@ body {
     .contact-info h3,
     .contact-form h3 {
         font-size: 1.3rem;
+    }
+    
+    /* Sepet modal mobil */
+    .cart-modal {
+        width: 95%;
+        max-width: 95%;
+        margin: 10px;
+        padding: 20px;
+        max-height: 90vh;
+    }
+    
+    .cart-item {
+        flex-direction: column;
+        gap: 10px;
+        padding: 15px;
+    }
+    
+    .cart-item-controls {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .checkout-btn {
+        width: 100%;
+        padding: 12px;
+    }
+    
+    /* İletişim kartları mobil */
+    .contact-card,
+    .whatsapp-card,
+    .info-card {
+        padding: 20px;
+    }
+    
+    .whatsapp-number {
+        font-size: 1.2rem;
+    }
+    
+    /* Form elemanları mobil */
+    input[type="text"],
+    input[type="tel"],
+    textarea,
+    select {
+        font-size: 16px; /* iOS zoom engellemek için */
+        padding: 12px;
+    }
+    
+    .submit-btn {
+        width: 100%;
+        padding: 14px;
+        font-size: 1rem;
+    }
+    
+    /* Hero butonları mobil */
+    .btn-primary,
+    .btn-secondary {
+        width: 100%;
+        max-width: 280px;
+        padding: 14px 24px;
+        font-size: 1rem;
+    }
+    
+    /* Özellik kartları mobil */
+    .feature-card {
+        padding: 25px 20px;
+    }
+    
+    .feature-icon {
+        font-size: 2.5rem;
     }
 }
 
@@ -1548,6 +1647,12 @@ body {
         margin: 15px 0;
     }
     
+    .nav-link {
+        font-size: 1.1rem;
+        padding: 10px 15px;
+        display: block;
+    }
+    
     .theme-toggle {
         position: absolute;
         right: 70px;
@@ -1567,23 +1672,6 @@ body {
         transform: translateY(-50%);
     }
 
-    .nav-menu {
-        position: fixed;
-        left: -100%;
-        top: 60px;
-        flex-direction: column;
-        background: white;
-        width: 100%;
-        text-align: center;
-        transition: 0.3s;
-        box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
-        z-index: 999;
-    }
-
-    .nav-menu.active {
-        left: 0;
-    }
-
     .hero-content h1 {
         font-size: 2rem;
     }
@@ -1595,6 +1683,7 @@ body {
     .hero-buttons {
         flex-direction: column;
         align-items: center;
+        gap: 15px;
     }
     
     .cta-button {
@@ -1606,16 +1695,40 @@ body {
         flex-direction: column;
         gap: 15px;
     }
+    
+    .stat-item {
+        padding: 15px;
+    }
 
     .product-grid {
         grid-template-columns: 1fr;
         padding: 0 20px;
+        gap: 30px;
     }
     
     .section-title {
         font-size: 2rem;
+        margin-bottom: 30px;
     }
     
+    /* About bölümü mobil */
+    .about-content {
+        flex-direction: column;
+        gap: 30px;
+    }
+    
+    .about-image,
+    .about-text {
+        width: 100%;
+    }
+    
+    /* Contact grid mobil */
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    /* Feature grid mobil */
     .feature-grid {
         grid-template-columns: 1fr;
         padding: 0 20px;
@@ -1637,6 +1750,61 @@ body {
     .modal-content {
         width: 95%;
         padding: 20px;
+    }
+    
+    /* Notification mobil */
+    .notification {
+        width: 90%;
+        right: 5%;
+        left: 5%;
+        font-size: 0.9rem;
+        padding: 12px;
+    }
+    
+    /* Hero section mobil iyileştirmeler */
+    .hero {
+        min-height: 70vh;
+        padding: 20px 0;
+    }
+    
+    .hero-content {
+        padding: 0 20px;
+    }
+    
+    /* About section mobil */
+    .about {
+        padding: 40px 0;
+    }
+    
+    .about-content {
+        padding: 0 20px;
+    }
+    
+    /* Features mobil */
+    .features {
+        padding: 40px 0;
+    }
+    
+    /* Contact section mobil */
+    .contact {
+        padding: 40px 0;
+    }
+    
+    .contact-grid {
+        padding: 0 20px;
+    }
+    
+    /* Footer mobil */
+    .footer {
+        padding: 30px 0;
+    }
+    
+    /* Scroll düğmesi mobil */
+    .scroll-to-top {
+        width: 45px;
+        height: 45px;
+        right: 15px;
+        bottom: 15px;
     }
 
 }
