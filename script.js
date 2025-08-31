@@ -312,21 +312,21 @@ if (cartButton) {
     cartButton.addEventListener('click', (e) => {
         e.preventDefault();
         displayCart();
-        cartModal.style.display = 'block';
+        cartModal.classList.add('show');
     });
 }
 
 // Modal kapat
 if (closeModal) {
     closeModal.addEventListener('click', () => {
-        cartModal.style.display = 'none';
+        cartModal.classList.remove('show');
     });
 }
 
 // Modal dışına tıklandığında kapat
 window.addEventListener('click', (e) => {
     if (e.target === cartModal) {
-        cartModal.style.display = 'none';
+        cartModal.classList.remove('show');
     }
 });
 
@@ -518,7 +518,7 @@ function sendToWhatsApp() {
     localStorage.removeItem('cart');
     updateCartBadge();
     displayCart();
-    cartModal.style.display = 'none';
+    cartModal.classList.remove('show');
 }
 
 // İletişim formu
