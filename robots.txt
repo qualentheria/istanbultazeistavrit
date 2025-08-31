@@ -4,4 +4,4 @@ Disallow: /admin/
 Disallow: /admin-login.html
 Disallow: /admin-dashboard.html
 
-Sitemap: https://istanbultazeistavrit.com/sitemap.xml
+Sitemap: https://istanbultazeistavrit.netlify.app/sitemap.xml
