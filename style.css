@@ -1041,6 +1041,11 @@ body {
     max-width: 600px;
     position: relative;
     max-height: 80vh;
+    margin: 50px auto;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: fixed;
     overflow-y: auto;
     color: var(--text-primary);
 }
