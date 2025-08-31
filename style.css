@@ -622,6 +622,13 @@ body {
     font-size: 16px;
 }
 
+/* Dark theme override for all qty-unit */
+[data-theme="dark"] .qty-unit,
+[data-theme="dark"] .quantity-controls .qty-unit,
+[data-theme="dark"] .cart-item .qty-unit {
+    color: #ffffff !important;
+}
+
 .cart-total {
     padding: 20px;
     text-align: right;
@@ -920,10 +927,6 @@ body {
     color: #64748b;
     font-size: 0.9rem;
     margin: 0 5px;
-}
-
-[data-theme="dark"] .qty-unit {
-    color: #ffffff !important;
 }
 
 [data-theme="dark"] .info-card p {
