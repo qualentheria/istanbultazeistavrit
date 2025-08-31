@@ -208,24 +208,24 @@ document.querySelectorAll('.add-to-cart').forEach(button => {
         const price = parseFloat(this.dataset.price);
         const productNameElement = this.parentElement.querySelector('h3');
         const productName = productNameElement ? productNameElement.textContent : 'Ürün';
-        const quantityInput = this.parentElement.querySelector('.quantity-input');
+        const quantityInput = this.parentElement.querySelector('.qty-input');
         let quantity = quantityInput ? parseFloat(quantityInput.value) : 1;
         
         // Miktar kontrolü ve yuvarlama
         if (isNaN(quantity) || quantity < 1) {
             showNotification('Minimum sipariş miktarı 1 kg olmalıdır!', 'warning');
-            quantityInput.value = '1.0';
+            if (quantityInput) quantityInput.value = '1.0';
             return;
         }
         if (quantity > 5) {
             showNotification('Maksimum sipariş miktarı 5 kg olabilir!', 'warning');
-            quantityInput.value = '5.0';
+            if (quantityInput) quantityInput.value = '5.0';
             return;
         }
         
         // 0.1 kg'ın katlarına yuvarla
         quantity = Math.round(quantity * 10) / 10;
-        quantityInput.value = quantity.toFixed(1);
+        if (quantityInput) quantityInput.value = quantity.toFixed(1);
         
         const existingItem = cart.find(item => item.product === product);
         
