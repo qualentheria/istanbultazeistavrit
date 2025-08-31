@@ -1,3 +1,20 @@
+// Hamburger menu
+const hamburger = document.getElementById('hamburger');
+const navMenu = document.querySelector('.nav-menu');
+
+if (hamburger) {
+    hamburger.addEventListener('click', () => {
+        navMenu.classList.toggle('active');
+    });
+}
+
+// Close menu when clicking nav links
+document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+        navMenu.classList.remove('active');
+    });
+});
+
 // Tema yönetimi
 const themeToggle = document.getElementById('themeToggle');
 const themeIcon = document.getElementById('themeIcon');
@@ -145,44 +162,7 @@ window.addEventListener('DOMContentLoaded', () => {
     updateCartBadge();
 });
 
-// Hamburger menü
-const hamburger = document.querySelector('.hamburger');
-const navMenu = document.querySelector('.nav-menu');
-
-if (hamburger) {
-    hamburger.addEventListener('click', () => {
-        navMenu.classList.toggle('active');
-        
-        // Hamburger animasyonu
-        const spans = hamburger.querySelectorAll('span');
-        if (navMenu.classList.contains('active')) {
-            spans[0].style.transform = 'rotate(-45deg) translate(-5px, 6px)';
-            spans[1].style.opacity = '0';
-            spans[2].style.transform = 'rotate(45deg) translate(-5px, -6px)';
-        } else {
-            spans[0].style.transform = '';
-            spans[1].style.opacity = '1';
-            spans[2].style.transform = '';
-        }
-    });
-}
-
-// Navigasyon linkleri tıklandığında menüyü kapat
-document.querySelectorAll('.nav-link').forEach(link => {
-    link.addEventListener('click', () => {
-        if (navMenu) {
-            navMenu.classList.remove('active');
-        }
-        if (hamburger) {
-            const spans = hamburger.querySelectorAll('span');
-            if (spans.length >= 3) {
-                spans[0].style.transform = '';
-                spans[1].style.opacity = '';
-                spans[2].style.transform = '';
-            }
-        }
-    });
-});
+// Hamburger menü animasyonu eklendi yukarıda
 
 // Smooth scroll navigasyon
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {

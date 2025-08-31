@@ -14,6 +14,15 @@
     <meta name="googlebot" content="index, follow">
     <meta name="google" content="notranslate">
     <meta name="format-detection" content="telephone=no">
+    
+    <!-- PWA Meta Tags -->
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#0066cc">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Taze İstavrit">
+    <link rel="apple-touch-icon" href="Logo.png">
+    
     <link rel="canonical" href="https://istanbultazeistavrit.netlify.app/">
     
     <!-- Open Graph / Facebook -->
@@ -79,7 +88,7 @@
     <nav class="navbar">
         <div class="container">
             <div class="nav-brand">
-                <span class="fish-icon">🌊</span>
+                <img src="Logo.png" alt="İstanbul Taze İstavrit" style="height: 45px; margin-right: 12px;">
                 <h2 style="display: inline; font-size: inherit; margin: 0;">İstanbul Taze İstavrit</h2>
             </div>
             <ul class="nav-menu">
@@ -89,14 +98,12 @@
                 <li><a href="#iletisim" class="nav-link">İletişim</a></li>
                 <li><a href="#" class="nav-link" id="cartButton">Sepet (<span id="cartCount">0</span>)</a></li>
             </ul>
+            <button class="hamburger" id="hamburger" aria-label="Menü">
+                <i class="fas fa-bars"></i>
+            </button>
             <button class="theme-toggle" id="themeToggle" aria-label="Tema Değiştir">
                 <i class="fas fa-moon" id="themeIcon"></i>
             </button>
-            <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
         </div>
     </nav>
 
@@ -125,7 +132,7 @@
                     <div class="feature-icon-wrapper">
                         <div class="feature-icon">🎣</div>
                     </div>
-                    <h3>İstanbul'da Günlük Taze İstavrit</h3>
+                    <h3>Günlük Taze İstavrit</h3>
                     <p>Her sabah taze avlanan istavritler aynı gün teslim edilir</p>
                 </div>
                 <div class="feature-card">
@@ -142,7 +149,7 @@
     <!-- Ürünler -->
     <section id="urunler" class="products">
         <div class="container">
-            <h2 class="section-title" data-aos="fade-up">İstanbul Taze İstavrit Ürünlerimiz</h2>
+            <h2 class="section-title" data-aos="fade-up">Ürünlerimiz</h2>
             <div class="product-grid">
                 <div class="product-card">
                     <div class="product-image">
@@ -150,7 +157,7 @@
                         <span class="badge">Günlük Taze</span>
                     </div>
                     <div class="product-info">
-                        <h3>İstanbul Taze İstavrit Balığı</h3>
+                        <h3>Taze İstavrit Balığı</h3>
                         <p class="product-description">Marmara Denizi'nden günlük avlanan taze istavrit</p>
                         <div class="price">
                             <span class="amount">₺450</span>
@@ -250,11 +257,35 @@
                     <span class="fish-icon">🌊</span>
                     <span>Taze İstavrit</span>
                 </div>
-                <p>&copy; 2024 <strong>İstanbul Taze İstavrit</strong> - Günlük Taze Balık. Tüm hakları saklıdır.</p>
+                <p>&copy; 2025 <strong>İstanbul Taze İstavrit</strong> - Günlük Taze Balık. Tüm hakları saklıdır.</p>
             </div>
         </div>
     </footer>
 
     <script src="script.js"></script>
+    <script>
+        // PWA Service Worker Registration
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js')
+                    .then(registration => {
+                        console.log('ServiceWorker registration successful');
+                        
+                        // Check for updates
+                        registration.addEventListener('updatefound', () => {
+                            const newWorker = registration.installing;
+                            newWorker.addEventListener('statechange', () => {
+                                if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                                    // New content available, refresh cache
+                                    newWorker.postMessage({ action: 'skipWaiting' });
+                                    window.location.reload();
+                                }
+                            });
+                        });
+                    })
+                    .catch(err => console.log('ServiceWorker registration failed:', err));
+            });
+        }
+    </script>
 </body>
 </html>

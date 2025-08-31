@@ -1,0 +1,20 @@
+{
+  "name": "İstanbul Taze İstavrit",
+  "short_name": "Taze İstavrit",
+  "description": "Günlük taze istavrit balığı satışı",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0066cc",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "Logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["food", "shopping"],
+  "lang": "tr"
+}
