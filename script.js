@@ -421,6 +421,78 @@ function showNotification(message, type = 'success') {
     }, 3000);
 }
 
+// Sepete ekle fonksiyonu
+function addToCart(productName, price) {
+    const existingItem = cart.find(item => item.name === productName);
+    
+    if (existingItem) {
+        existingItem.quantity += 1;
+        showNotificationWithQuantity(productName, existingItem.quantity, price);
+    } else {
+        cart.push({
+            name: productName,
+            price: price,
+            quantity: 1
+        });
+        showNotificationWithQuantity(productName, 1, price);
+    }
+    
+    updateCartCount();
+    saveCart();
+}
+
+// Miktar ile bildirim göster
+function showNotificationWithQuantity(productName, quantity, price) {
+    const notification = document.createElement('div');
+    notification.className = 'notification';
+    notification.innerHTML = `
+        <div style="display: flex; align-items: center; justify-content: space-between; gap: 15px;">
+            <span>${productName} sepete eklendi (${quantity} kg)</span>
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <button onclick="updateCartItem('${productName}', -0.5)" style="background: white; color: var(--primary-color); border: none; padding: 5px 10px; border-radius: 5px; cursor: pointer;">-</button>
+                <span style="font-weight: bold;">${quantity} kg</span>
+                <button onclick="updateCartItem('${productName}', 0.5)" style="background: white; color: var(--primary-color); border: none; padding: 5px 10px; border-radius: 5px; cursor: pointer;">+</button>
+            </div>
+        </div>
+    `;
+    
+    document.body.appendChild(notification);
+    
+    setTimeout(() => {
+        notification.classList.add('show');
+    }, 100);
+    
+    setTimeout(() => {
+        notification.classList.remove('show');
+        setTimeout(() => {
+            if (document.body.contains(notification)) {
+                document.body.removeChild(notification);
+            }
+        }, 300);
+    }, 5000);
+}
+
+// Sepetteki ürünü güncelle
+function updateCartItem(productName, change) {
+    const item = cart.find(item => item.name === productName);
+    if (item) {
+        item.quantity = Math.max(0.5, item.quantity + change);
+        updateCartCount();
+        saveCart();
+        
+        // Mevcut bildirimi güncelle
+        const notifications = document.querySelectorAll('.notification');
+        notifications.forEach(notif => {
+            if (notif.innerHTML.includes(productName)) {
+                const quantitySpan = notif.querySelector('span[style*="font-weight: bold"]');
+                if (quantitySpan) {
+                    quantitySpan.textContent = `${item.quantity} kg`;
+                }
+            }
+        });
+    }
+}
+
 // Animasyon stilleri ekle
 const style = document.createElement('style');
 style.textContent = `
