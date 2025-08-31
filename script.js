@@ -8,6 +8,7 @@ function setTheme(theme) {
     document.documentElement.setAttribute('data-theme', theme);
     localStorage.setItem('theme', theme);
     updateThemeIcon(theme);
+    updateInlineStyles(theme);
 }
 
 function updateThemeIcon(theme) {
@@ -17,6 +18,86 @@ function updateThemeIcon(theme) {
     } else {
         themeIcon.classList.remove('fa-sun');
         themeIcon.classList.add('fa-moon');
+    }
+}
+
+function updateInlineStyles(theme) {
+    // Features section
+    const featuresSection = document.querySelector('.features');
+    if (featuresSection) {
+        if (theme === 'dark') {
+            featuresSection.style.cssText = 'background: #0f0f0f !important; margin-top: -2px;';
+        } else {
+            featuresSection.style.cssText = 'background: #f1f5f9 !important; margin-top: -2px;';
+        }
+    }
+    
+    // Feature cards
+    const featureCards = document.querySelectorAll('.feature-card');
+    featureCards.forEach(card => {
+        if (theme === 'dark') {
+            card.style.cssText = 'background: #1a1a1a !important; color: #ffffff !important; box-shadow: 0 5px 15px rgba(0,0,0,0.5); padding: 40px; border-radius: 15px; text-align: center; position: relative; transition: transform 0.3s, box-shadow 0.3s; overflow: hidden;';
+            // Update text colors
+            const h3 = card.querySelector('h3');
+            const p = card.querySelector('p');
+            if (h3) h3.style.cssText = 'color: #06b6d4 !important; font-size: 1.5rem; margin-bottom: 15px;';
+            if (p) p.style.cssText = 'color: #d0d0d0 !important; line-height: 1.8;';
+        } else {
+            card.style.cssText = 'background: white !important; color: #1e293b !important; box-shadow: 0 5px 15px rgba(0,0,0,0.1); padding: 40px; border-radius: 15px; text-align: center; position: relative; transition: transform 0.3s, box-shadow 0.3s; overflow: hidden;';
+            // Update text colors
+            const h3 = card.querySelector('h3');
+            const p = card.querySelector('p');
+            if (h3) h3.style.cssText = 'color: #0077be !important; font-size: 1.5rem; margin-bottom: 15px;';
+            if (p) p.style.cssText = 'color: #666666 !important; line-height: 1.8;';
+        }
+    });
+    
+    // Products section
+    const productsSection = document.querySelector('.products');
+    if (productsSection) {
+        if (theme === 'dark') {
+            productsSection.style.cssText = 'background: #0f0f0f !important; padding: 80px 0;';
+        } else {
+            productsSection.style.cssText = 'background: white !important; padding: 80px 0;';
+        }
+    }
+    
+    // Product cards
+    const productCards = document.querySelectorAll('.product-card');
+    productCards.forEach(card => {
+        if (theme === 'dark') {
+            card.style.cssText = 'background: #1a1a1a !important; box-shadow: 0 5px 15px rgba(0,0,0,0.5); border-radius: 15px; overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease; position: relative;';
+            // Update product info section
+            const productInfo = card.querySelector('.product-info');
+            if (productInfo) {
+                productInfo.style.cssText = 'background: #1a1a1a !important; color: #ffffff !important; padding: 35px;';
+                const h3 = productInfo.querySelector('h3');
+                const p = productInfo.querySelector('p');
+                if (h3) h3.style.cssText = 'color: #ffffff !important; font-size: 1.5rem; margin-bottom: 10px;';
+                if (p) p.style.cssText = 'color: #d0d0d0 !important; margin-bottom: 15px;';
+            }
+        } else {
+            card.style.cssText = 'background: white !important; box-shadow: 0 5px 15px rgba(0,0,0,0.1); border-radius: 15px; overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease; position: relative;';
+            // Update product info section
+            const productInfo = card.querySelector('.product-info');
+            if (productInfo) {
+                productInfo.style.cssText = 'background: white !important; color: #1e293b !important; padding: 35px;';
+                const h3 = productInfo.querySelector('h3');
+                const p = productInfo.querySelector('p');
+                if (h3) h3.style.cssText = 'color: #1e293b !important; font-size: 1.5rem; margin-bottom: 10px;';
+                if (p) p.style.cssText = 'color: #666666 !important; margin-bottom: 15px;';
+            }
+        }
+    });
+    
+    // Section title
+    const sectionTitle = document.querySelector('.section-title');
+    if (sectionTitle) {
+        if (theme === 'dark') {
+            sectionTitle.style.cssText = 'color: #ffffff !important; font-size: 3rem; margin-bottom: 50px; text-align: center;';
+        } else {
+            sectionTitle.style.cssText = 'color: #1e293b !important; font-size: 3rem; margin-bottom: 50px; text-align: center;';
+        }
     }
 }
 
@@ -59,9 +140,8 @@ let closeModal = document.querySelector('.close');
 let cartButton = document.getElementById('cartButton');
 let cartCount = document.getElementById('cartCount');
 
-// Sayfa yüklendiğinde sepeti ve temayı güncelle
+// Sayfa yüklendiğinde sepeti güncelle
 window.addEventListener('DOMContentLoaded', () => {
-    initTheme();
     updateCartBadge();
 });
 
@@ -512,6 +592,9 @@ if (navbar) {
 
 // Sayfa yüklendiğinde
 document.addEventListener('DOMContentLoaded', () => {
+    // Tema başlat
+    initTheme();
+    
     // Loading animasyonu
     document.body.style.opacity = '0';
     setTimeout(() => {

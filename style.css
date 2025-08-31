@@ -194,7 +194,8 @@ body {
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    background: var(--gradient-1);
+    background: linear-gradient(rgba(0, 119, 190, 0.8), rgba(0, 168, 204, 0.8)), 
+                url('https://images.unsplash.com/photo-1498654200943-1088dd4438ae?ixlib=rb-4.0.3') center/cover;
     margin-bottom: 0;
 }
 
@@ -387,12 +388,14 @@ body {
 /* Özellikler */
 .features {
     padding: 80px 0;
-    background: var(--bg-light);
+    background: #f1f5f9;
     position: relative;
+    display: block !important;
+    visibility: visible !important;
 }
 
 [data-theme="dark"] .features {
-    background: var(--bg-primary);
+    background: #0f0f0f;
 }
 
 .feature-grid {
@@ -403,14 +406,17 @@ body {
 }
 
 .feature-card {
-    background: var(--bg-card);
+    background: #ffffff !important;
     padding: 40px;
     border-radius: 15px;
     text-align: center;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-    transition: all 0.3s ease;
     position: relative;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     overflow: hidden;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
 }
 
 .feature-card::after {
@@ -437,35 +443,45 @@ body {
 .feature-icon-wrapper {
     width: 80px;
     height: 80px;
-    margin: 0 auto 25px;
-    background: var(--gradient-1);
+    background: linear-gradient(135deg, #0891b2 0%, #06b6d4 100%);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
+    margin: 0 auto 20px;
+    transition: transform 0.3s;
 }
 
 .feature-icon {
     font-size: 2.5rem;
     filter: grayscale(0);
+    color: #ffffff;
 }
 
 .feature-card h3 {
     font-size: 1.5rem;
     margin-bottom: 15px;
-    color: var(--primary-color);
+    color: #0077be;
+}
+
+.feature-card p {
+    color: #666666;
+    line-height: 1.8;
 }
 
 /* Ürünler */
 .products {
     padding: 80px 0;
+    background: #ffffff;
+    display: block !important;
+    visibility: visible !important;
 }
 
 .section-title {
     font-size: 3rem;
     margin-bottom: 50px;
     text-align: center;
-    color: var(--text-primary);
+    color: #1e293b;
 }
 
 .product-grid {
@@ -476,11 +492,16 @@ body {
 }
 
 .product-card {
-    background: var(--bg-card);
+    background: #ffffff !important;
     border-radius: 15px;
     overflow: hidden;
-    box-shadow: 0 10px 30px var(--shadow);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    z-index: 1;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
 }
 
 .product-card:hover {
@@ -490,9 +511,9 @@ body {
 
 .product-image {
     position: relative;
-    height: 200px;
     overflow: hidden;
-    background: linear-gradient(180deg, rgba(14, 165, 233, 0.05) 0%, rgba(14, 165, 233, 0) 100%);
+    height: 250px;
+    background: #f0f0f0;
 }
 
 .product-image img {
@@ -521,17 +542,17 @@ body {
 
 .product-info {
     padding: 35px;
-    background: var(--bg-primary);
+    background: #ffffff;
 }
 
 .product-info h3 {
     font-size: 1.5rem;
     margin-bottom: 10px;
-    color: var(--text-primary);
+    color: #1e293b;
 }
 
 .product-description {
-    color: var(--text-secondary);
+    color: #666666;
     margin-bottom: 15px;
 }
 
@@ -650,7 +671,7 @@ body {
 /* Hakkımızda */
 .about {
     padding: 80px 0;
-    background: var(--bg-light);
+    background: #f1f5f9;
 }
 
 [data-theme="dark"] .about {
@@ -943,10 +964,10 @@ body {
 }
 
 .contact-form {
-    background: var(--bg-card);
+    background: #ffffff;
     padding: 40px;
     border-radius: 15px;
-    box-shadow: var(--shadow);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 .contact-form h3 {
@@ -1163,9 +1184,9 @@ body {
 }
 
 [data-theme="dark"] .product-card {
-    background: var(--bg-card);
-    border: 1px solid var(--border-color);
-    color: var(--text-primary);
+    background: #1a1a1a;
+    border: 1px solid #333;
+    color: #ffffff;
 }
 
 [data-theme="dark"] .product-info {
@@ -1543,18 +1564,21 @@ body {
     .modal-header h2 {
         font-size: 1.3rem;
     }
-}    padding: 15px;
+    
+    .modal-body {
+        padding: 15px;
     }
     
     .product-image {
         height: 200px;
     }
-{{ ... }}
+    
     .cart-item {
         flex-direction: column;
         gap: 10px;
         padding: 15px;
     }
+}
 /* En Küçük Telefonlar (iPhone SE, Galaxy S5 vb.) */
 @media (max-width: 375px) {
     /* Container genişliği */
@@ -1928,16 +1952,10 @@ body {
     .cta-button:active {
         transform: scale(0.98);
     }
-}    
+    
     .whatsapp-number {
         font-size: 1.2rem;
     }
-    
-    /* Form elemanları mobil */
-{{ ... }}
-    font-size: 3.5rem;
-    margin-bottom: 20px;
-    display: inline-block;
 }
 
 /* Mobil Responsive - Tablet */
