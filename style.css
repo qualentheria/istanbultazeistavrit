@@ -264,20 +264,15 @@ body {
 }
 
 .cta-button {
-    padding: 18px 45px;
+    display: inline-block;
+    padding: 15px 40px;
     font-size: 18px;
     font-weight: 600;
-    border: none;
-    border-radius: 50px;
-    cursor: pointer;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    gap: 12px;
-    box-shadow: 0 10px 30px rgba(8, 145, 178, 0.3);
-    position: relative;
-    overflow: hidden;
+    border-radius: 50px;
+    transition: all 0.3s;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    text-align: center;
 }
 
 .button-icon {
@@ -654,7 +649,6 @@ body {
     text-decoration: none;
     display: inline-flex;
     align-items: center;
-    justify-content: center;
     gap: 10px;
     font-size: 16px;
 }
@@ -920,6 +914,16 @@ body {
     color: #64748b;
     font-size: 16px;
     line-height: 1.6;
+}
+
+.info-card p.qty-unit {
+    color: #64748b;
+    font-size: 0.9rem;
+    margin: 0 5px;
+}
+
+[data-theme="dark"] .qty-unit {
+    color: #ffffff !important;
 }
 
 [data-theme="dark"] .info-card p {
@@ -1469,20 +1473,29 @@ body {
     }
     
     .nav-brand img {
-        height: 35px;
+        height: 35px !important;
+        display: inline-block !important;
+        background: white;
+        padding: 4px;
+        border-radius: 6px;
     }
     
     .nav-menu {
         position: fixed;
         left: -100%;
-        top: 60px;
+        top: 70px;
         flex-direction: column;
         background: var(--bg-primary);
-        width: 100%;
-        text-align: center;
-        transition: 0.3s;
-        box-shadow: 0 10px 27px rgba(0,0,0,0.05);
+        width: 90%;
+        max-width: 350px;
+        text-align: left;
+        transition: 0.3s ease;
+        box-shadow: 2px 0 20px rgba(0,0,0,0.2);
         z-index: 999;
+        padding: 30px 0;
+        border-radius: 0 20px 20px 0;
+        height: calc(100vh - 70px);
+        overflow-y: auto;
     }
     
     .nav-menu.active {
@@ -1490,7 +1503,22 @@ body {
     }
     
     .nav-menu li {
-        margin: 15px 0;
+        margin: 20px 0;
+    }
+    
+    .nav-menu .nav-link {
+        font-size: 1.1rem;
+        padding: 15px 30px;
+        display: block;
+        transition: all 0.3s ease;
+        border-radius: 10px;
+        margin: 5px 15px;
+    }
+    
+    .nav-menu .nav-link:hover {
+        background: linear-gradient(135deg, rgba(0,102,204,0.1), rgba(0,102,204,0.05));
+        color: var(--primary-color);
+        transform: translateX(5px);
     }
     
     .hamburger {
@@ -1528,10 +1556,14 @@ body {
         width: 100%;
     }
     
-    .hero-buttons .btn {
+    .hero-buttons .btn,
+    .hero-buttons .cta-button {
         width: 100%;
         padding: 15px;
         font-size: 1rem;
+        text-align: center;
+        display: block;
+        box-sizing: border-box;
     }
     
     .products {
@@ -1624,26 +1656,17 @@ body {
         font-size: 1.1rem;
     }
     
+    .product-card p {
+        font-size: 0.85rem;
+    }
+    
     .product-price {
         font-size: 1.2rem;
-    }
-    
-    .quantity-selector {
-        flex-direction: column;
-        gap: 0.5rem;
-    }
-    
-    .quantity-input {
-        width: 100%;
     }
     
     /* Feature kartları */
     .feature-card {
         padding: 1.2rem;
-    }
-    
-    .feature-card i {
-        font-size: 2rem;
     }
     
     .feature-card h3 {
@@ -1668,139 +1691,6 @@ body {
         padding: 1.2rem;
     }
     
-    .form-group label {
-        font-size: 0.9rem;
-    }
-    
-    /* Butonlar */
-    .btn {
-        padding: 0.8rem 1.5rem;
-        font-size: 0.9rem;
-    }
-    
-    /* Footer */
-    .footer h3 {
-        font-size: 1.2rem;
-    }
-    
-    .footer p,
-    .footer a {
-        font-size: 0.85rem;
-    }
-    
-    /* Modal */
-    .modal-content {
-        padding: 1.2rem;
-        margin: 5% auto;
-    }
-    
-    .modal-header h2 {
-        font-size: 1.3rem;
-    }
-    
-    .modal-body {
-        padding: 15px;
-    }
-    
-    .product-image {
-        height: 200px;
-    }
-    
-    .cart-item {
-        flex-direction: column;
-        gap: 10px;
-        padding: 15px;
-    }
-}
-/* En Küçük Telefonlar (iPhone SE, Galaxy S5 vb.) */
-@media (max-width: 375px) {
-    /* Container genişliği */
-    .container {
-        padding: 0 0.75rem;
-    }
-    
-    /* Navigasyon */
-    .navbar {
-        padding: 0.4rem 0.75rem;
-    }
-    
-    .logo {
-        font-size: 1rem;
-    }
-    
-    /* Hero */
-    .hero {
-        min-height: 55vh;
-        padding: 1.5rem 0.75rem;
-    }
-    
-    .hero h1 {
-        font-size: 1.3rem;
-        margin-bottom: 0.8rem;
-    }
-    
-    .hero p {
-        font-size: 0.85rem;
-        margin-bottom: 1.2rem;
-    }
-    
-    /* Sections */
-    section {
-        padding: 1.8rem 0.75rem;
-    }
-    
-    h2 {
-        font-size: 1.3rem;
-    }
-    
-    /* Ürün kartları */
-    .product-card {
-        padding: 1rem;
-    }
-    
-    .product-card h3 {
-        font-size: 1rem;
-    }
-    
-    .product-card p {
-        font-size: 0.85rem;
-    }
-    
-    .product-price {
-        font-size: 1.1rem;
-    }
-    
-    /* Feature kartları */
-    .feature-card {
-        padding: 1rem;
-    }
-    
-    .feature-card h3 {
-        font-size: 1rem;
-    }
-    
-    .feature-card p {
-        font-size: 0.85rem;
-    }
-    
-    /* İstatistikler */
-    .stat {
-        padding: 0.8rem;
-    }
-    
-    .stat h3 {
-        font-size: 1.5rem;
-    }
-    
-    .stat p {
-        font-size: 0.8rem;
-    }
-    
-    /* Contact form */
-    .contact-form {
-        padding: 1rem;
-    }
-    
     .contact-form h2 {
         font-size: 1.1rem;
         margin-bottom: 0.8rem;
@@ -1811,7 +1701,7 @@ body {
     }
     
     .form-group label {
-        font-size: 0.85rem;
+        font-size: 0.9rem;
         margin-bottom: 0.3rem;
     }
     
