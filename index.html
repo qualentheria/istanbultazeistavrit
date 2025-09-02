@@ -1,291 +1,1295 @@
 <!DOCTYPE html>
-<html lang="tr" itemscope itemtype="http://schema.org/WebPage">
+<html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-    <title>İstanbul Taze İstavrit - Günlük Taze Balık | Denizden Sofranıza</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="İstanbul Taze İstavrit - Denizden sofranıza en taze istavrit">
+    <title>İstanbul Taze İstavrit - En Taze Balık Satışı</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- SEO Meta Tags -->
-    <meta name="description" content="İstanbul Taze İstavrit - Marmara Denizi'nden günlük avlanan taze istavrit balığı. Aynı gün teslimat, en kaliteli deniz ürünleri. İstanbul'un en taze istavriti.">
-    <meta name="keywords" content="istanbul taze istavrit, taze istavrit, istavrit balığı, günlük balık, taze balık istanbul, deniz ürünleri, istavrit satış, marmara denizi balık">
-    <meta name="author" content="İstanbul Taze İstavrit">
-    <meta name="robots" content="index, follow">
-    <meta name="language" content="Turkish">
-    <meta name="googlebot" content="index, follow">
-    <meta name="google" content="notranslate">
-    <meta name="format-detection" content="telephone=no">
-    
-    <!-- PWA Meta Tags -->
-    <link rel="manifest" href="/manifest.json">
-    <meta name="theme-color" content="#0066cc">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="default">
-    <meta name="apple-mobile-web-app-title" content="Taze İstavrit">
-    <link rel="apple-touch-icon" href="Logo.png">
-    
-    <link rel="canonical" href="https://istanbultazeistavrit.netlify.app/">
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://istanbultazeistavrit.netlify.app/">
-    <meta property="og:title" content="İstanbul Taze İstavrit - Günlük Taze Balık">
-    <meta property="og:description" content="Marmara Denizi'nden günlük avlanan taze istavrit. Aynı gün teslimat ile kapınıza.">
-    <meta property="og:image" content="https://images.unsplash.com/photo-1510130387422-82bed34b37e9?w=1200&h=630&fit=crop">
-    <meta property="og:locale" content="tr_TR">
-    
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://istanbultazeistavrit.netlify.app/">
-    <meta property="twitter:title" content="İstanbul Taze İstavrit - Günlük Taze Balık">
-    <meta property="twitter:description" content="Marmara Denizi'nden günlük avlanan taze istavrit. Aynı gün teslimat.">
-    <meta property="twitter:image" content="https://images.unsplash.com/photo-1510130387422-82bed34b37e9?w=1200&h=630&fit=crop">
-    <link rel="stylesheet" href="style.css?v=2">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Structured Data / Schema.org -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "LocalBusiness",
-        "name": "İstanbul Taze İstavrit",
-        "description": "Marmara Denizi'nden günlük avlanan taze istavrit balığı satışı",
-        "url": "https://istanbultazeistavrit.netlify.app",
-        "telephone": "+90-555-123-4567",
-        "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "İstanbul",
-            "addressRegion": "Marmara",
-            "addressCountry": "TR"
-        },
-        "priceRange": "₺₺",
-        "servesCuisine": "Deniz Ürünleri",
-        "openingHours": "Mo-Su 08:00-20:00",
-        "image": "https://images.unsplash.com/photo-1510130387422-82bed34b37e9",
-        "sameAs": [
-            "https://www.instagram.com/istanbultazeistavrit",
-            "https://www.facebook.com/istanbultazeistavrit"
-        ],
-        "offers": {
-            "@type": "Offer",
-            "name": "Taze İstavrit",
-            "description": "Günlük avlanan taze istavrit",
-            "price": "450",
-            "priceCurrency": "TRY",
-            "availability": "https://schema.org/InStock",
-            "seller": {
-                "@type": "Organization",
-                "name": "İstanbul Taze İstavrit"
+    <style>
+        :root {
+            --primary-color: #0066CC;
+            --primary-dark: #004499;
+            --secondary-color: #4A90E2;
+            --bg-color: #FFFFFF;
+            --bg-secondary: #F5F5F5;
+            --text-color: #333333;
+            --text-secondary: #666666;
+            --border-color: #E0E0E0;
+            --success-color: #4CAF50;
+            --danger-color: #F44336;
+            --shadow-sm: 0 2px 4px rgba(0,0,0,0.1);
+            --shadow-md: 0 4px 8px rgba(0,0,0,0.15);
+            --shadow-lg: 0 8px 16px rgba(0,0,0,0.2);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        [data-theme="dark"] {
+            --primary-color: #4A90E2;
+            --primary-dark: #357ABD;
+            --secondary-color: #64B5F6;
+            --bg-color: #1A1A1A;
+            --bg-secondary: #2D2D2D;
+            --text-color: #E0E0E0;
+            --text-secondary: #B0B0B0;
+            --border-color: #404040;
+            --shadow-sm: 0 2px 4px rgba(0,0,0,0.3);
+            --shadow-md: 0 4px 8px rgba(0,0,0,0.4);
+            --shadow-lg: 0 8px 16px rgba(0,0,0,0.5);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            transition: var(--transition);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: var(--bg-color);
+            box-shadow: var(--shadow-sm);
+            z-index: 1000;
+            transition: var(--transition);
+        }
+        
+        header.scrolled {
+            padding: 10px 0;
+            box-shadow: var(--shadow-md);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            transition: var(--transition);
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        
+        .logo:hover {
+            transform: scale(1.05);
+        }
+        
+        .logo-icon {
+            font-size: 2rem;
+            margin-right: 10px;
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        
+        .nav-menu a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        .nav-menu a:hover {
+            color: var(--primary-color);
+        }
+        
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+        
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .theme-toggle {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .theme-toggle:hover {
+            transform: rotate(180deg);
+        }
+        
+        .cart-btn {
+            position: relative;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .cart-btn:hover {
+            transform: scale(1.1);
+        }
+        
+        .cart-badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background-color: var(--danger-color);
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        
+        .cart-badge.hidden {
+            display: none;
+        }
+        
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        .hero {
+            margin-top: 80px;
+            padding: 100px 0;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            animation: wave 20s linear infinite;
+        }
+        
+        @keyframes wave {
+            0% { transform: translateX(0) translateY(0); }
+            100% { transform: translateX(-60px) translateY(-60px); }
+        }
+        
+        .hero-content {
+            position: relative;
+            text-align: center;
+            color: white;
+            animation: fadeInUp 1s ease;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
             }
         }
-    }
-    </script>
+        
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+        
+        .cta-btn {
+            display: inline-block;
+            padding: 15px 40px;
+            background-color: white;
+            color: var(--primary-color);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 50px;
+            color: var(--primary-color);
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+        
+        .features {
+            background-color: var(--bg-secondary);
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background-color: var(--bg-color);
+            padding: 40px 30px;
+            border-radius: 15px;
+            text-align: center;
+            transition: var(--transition);
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+        
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--text-color);
+        }
+        
+        .feature-card p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+        
+        .product-card {
+            background-color: var(--bg-secondary);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            display: flex;
+            flex-wrap: wrap;
+            max-width: 800px;
+            margin: 0 auto;
+            transition: var(--transition);
+        }
+        
+        .product-card:hover {
+            transform: scale(1.02);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .product-image {
+            flex: 1 1 300px;
+            min-height: 300px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 8rem;
+        }
+        
+        .product-info {
+            flex: 1 1 400px;
+            padding: 40px;
+        }
+        
+        .product-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--text-color);
+        }
+        
+        .product-description {
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        
+        .product-price {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 30px;
+        }
+        
+        .quantity-selector {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .quantity-btn {
+            width: 40px;
+            height: 40px;
+            border: 2px solid var(--primary-color);
+            background-color: var(--bg-color);
+            color: var(--primary-color);
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        
+        .quantity-btn:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .quantity-input {
+            width: 100px;
+            padding: 10px;
+            text-align: center;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+        }
+        
+        .add-to-cart {
+            width: 100%;
+            padding: 15px 30px;
+            background-color: var(--success-color);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .add-to-cart:hover {
+            background-color: #45a049;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .reviews {
+            background-color: var(--bg-secondary);
+        }
+        
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        .review-card {
+            background-color: var(--bg-color);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+        
+        .review-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .review-name {
+            font-weight: 600;
+            color: var(--text-color);
+        }
+        
+        .review-stars {
+            color: #FFD700;
+        }
+        
+        .review-text {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            font-style: italic;
+        }
+        
+        footer {
+            background-color: var(--bg-secondary);
+            padding: 60px 0 30px;
+            border-top: 1px solid var(--border-color);
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-section h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+        
+        .footer-section p, .footer-section ul {
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-secondary);
+        }
+        
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+        }
+        
+        .modal-overlay.active {
+            display: flex;
+        }
+        
+        .modal {
+            background-color: var(--bg-color);
+            border-radius: 15px;
+            width: 90%;
+            max-width: 600px;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 30px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .modal-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-color);
+        }
+        
+        .modal-close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-secondary);
+            transition: var(--transition);
+        }
+        
+        .modal-close:hover {
+            color: var(--danger-color);
+            transform: rotate(90deg);
+        }
+        
+        .modal-body {
+            padding: 30px;
+        }
+        
+        .cart-empty {
+            text-align: center;
+            padding: 40px;
+            color: var(--text-secondary);
+        }
+        
+        .cart-item {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 20px;
+            background-color: var(--bg-secondary);
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .cart-item-image {
+            font-size: 3rem;
+        }
+        
+        .cart-item-info {
+            flex: 1;
+        }
+        
+        .cart-item-name {
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: var(--text-color);
+        }
+        
+        .cart-item-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .cart-quantity-btn {
+            width: 25px;
+            height: 25px;
+            border: 1px solid var(--primary-color);
+            background-color: var(--bg-color);
+            color: var(--primary-color);
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+        
+        .cart-quantity-btn:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .cart-quantity {
+            font-weight: 600;
+            min-width: 50px;
+            text-align: center;
+        }
+        
+        .cart-item-price {
+            font-weight: 700;
+            color: var(--primary-color);
+            font-size: 1.2rem;
+        }
+        
+        .cart-summary {
+            padding: 20px;
+            background-color: var(--bg-secondary);
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--text-color);
+        }
+        
+        .cart-note {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+        
+        .cart-actions {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .btn {
+            flex: 1;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .btn-clear {
+            background-color: var(--danger-color);
+            color: white;
+        }
+        
+        .btn-clear:hover {
+            background-color: #d32f2f;
+            transform: translateY(-2px);
+        }
+        
+        .btn-order {
+            background-color: var(--success-color);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .btn-order:hover {
+            background-color: #45a049;
+            transform: translateY(-2px);
+        }
+        
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: var(--success-color);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 50px;
+            box-shadow: var(--shadow-lg);
+            transform: translateX(400px);
+            transition: transform 0.3s ease;
+            z-index: 3000;
+        }
+        
+        .toast.show {
+            transform: translateX(0);
+        }
+        
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background-color: var(--bg-color);
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: var(--shadow-md);
+            }
+            
+            .nav-menu.active {
+                display: flex;
+            }
+            
+            .mobile-menu-toggle {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .product-card {
+                flex-direction: column;
+            }
+            
+            .product-image {
+                min-height: 200px;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero {
+                padding: 60px 0;
+            }
+            
+            section {
+                padding: 60px 0;
+            }
+            
+            .reviews-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .cart-actions {
+                flex-direction: column;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- Navigasyon -->
-    <nav class="navbar">
-        <div class="container">
-            <div class="nav-brand">
-                <img src="Logo.png" alt="İstanbul Taze İstavrit" style="height: 45px; margin-right: 12px;">
-                <h2 style="display: inline; font-size: inherit; margin: 0;">İstanbul Taze İstavrit</h2>
+    <header id="header">
+        <nav class="container">
+            <div class="logo">
+                <img src="images/Logo.png" alt="İstanbul Taze İstavrit" style="height: 50px; width: auto;">
             </div>
-            <ul class="nav-menu">
-                <li><a href="#anasayfa" class="nav-link">Ana Sayfa</a></li>
-                <li><a href="#urunler" class="nav-link">Ürünlerimiz</a></li>
-                <li><a href="#hakkimizda" class="nav-link">Hakkımızda</a></li>
-                <li><a href="#iletisim" class="nav-link">İletişim</a></li>
-                <li><a href="#" class="nav-link" id="cartButton">Sepet (<span id="cartCount">0</span>)</a></li>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home">Ana Sayfa</a></li>
+                <li><a href="#features">Neden Biz</a></li>
+                <li><a href="#products">Ürünlerimiz</a></li>
+                <li><a href="#reviews">Değerlendirmeler</a></li>
+                <li><a href="#contact">İletişim</a></li>
             </ul>
-            <button class="hamburger" id="hamburger" aria-label="Menü">
-                <i class="fas fa-bars"></i>
-            </button>
-            <button class="theme-toggle" id="themeToggle" aria-label="Tema Değiştir">
-                <i class="fas fa-moon" id="themeIcon"></i>
-            </button>
-        </div>
-    </nav>
-
-    <!-- Hero Bölümü -->
-    <section id="anasayfa" class="hero">
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle">🌙</button>
+                <button class="cart-btn" id="cartBtn">
+                    🛒
+                    <span class="cart-badge hidden" id="cartBadge">0</span>
+                </button>
+                <button class="mobile-menu-toggle" id="mobileMenuToggle">☰</button>
+            </div>
+        </nav>
+    </header>
+    
+    <section class="hero" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('images/Hero.png'); background-size: cover; background-position: center;">
         <div class="hero-content">
-            <h1 class="hero-title">İstanbul <span class="text-gradient">Taze İstavrit</span></h1>
-            <p class="hero-subtitle">İstanbul'da Günlük Taze İstavrit - Denizden Sofranıza</p>
-            <div class="hero-buttons">
-                <a href="#urunler" class="cta-button primary">
-                    <span>Hemen Alışveriş Yap</span>
-                </a>
-                <a href="#iletisim" class="cta-button secondary">
-                    <span class="button-icon">📞</span> 
-                    <span>İletişime Geç</span>
-                </a>
-            </div>
+            <h1 class="hero-title" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.7);">İstanbul'un En Taze İstavritleri</h1>
+            <p class="hero-subtitle" style="text-shadow: 1px 1px 2px rgba(0,0,0,0.7);">Her gün taze, doğrudan balıkçıdan sofralarınıza</p>
+            <button class="btn btn-primary" onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">Hemen Sipariş Ver</button>
         </div>
     </section>
-
-    <!-- Özellikler -->
-    <section class="features" style="margin-top: -2px;">
+    
+    <section id="features" class="features">
         <div class="container">
-            <div class="feature-grid">
+            <h2 class="section-title">Neden Biz?</h2>
+            <div class="features-grid">
                 <div class="feature-card">
-                    <div class="feature-icon-wrapper">
-                        <div class="feature-icon">🎣</div>
-                    </div>
-                    <h3>Günlük Taze İstavrit</h3>
-                    <p>Her sabah taze avlanan istavritler aynı gün teslim edilir</p>
+                    <div class="feature-icon">✓</div>
+                    <h3>%100 Taze Ürün</h3>
+                    <p>Her sabah olta ile avlanan, günlük taze istavritler</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon-wrapper">
-                        <div class="feature-icon">🚚</div>
-                    </div>
-                    <h3>Hızlı Teslimat</h3>
-                    <p>Siparişiniz aynı gün kapınıza teslim edilir</p>
+                    <div class="feature-icon">🚚</div>
+                    <h3>Aynı Gün Teslimat</h3>
+                    <p>İstanbul'un her yerine aynı gün içinde teslimat</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⭐</div>
+                    <h3>Premium Kalite</h3>
+                    <p>Olta balıkçılığı ile özenle seçilmiş en kaliteli istavritler</p>
                 </div>
             </div>
         </div>
     </section>
-
-    <!-- Ürünler -->
-    <section id="urunler" class="products">
+    
+    <section id="products" class="products">
         <div class="container">
-            <h2 class="section-title" data-aos="fade-up">Ürünlerimiz</h2>
-            <div class="product-grid">
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1510130387422-82bed34b37e9?w=600&h=400&fit=crop" alt="Taze İstavrit">
-                        <span class="badge">Günlük Taze</span>
+            <h2 class="section-title">Taze İstavrit Balığı</h2>
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="images/Balık.png" alt="Taze İstavrit" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px;">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Günlük Taze İstavrit</h3>
+                    <p class="product-description">Olta ile avlanmış, temizlenmemiş, en doğal haliyle</p>
+                    <div class="product-price">450 ₺/kg</div>
+                    <div class="quantity-selector">
+                        <button class="quantity-btn" onclick="changeQuantity(-0.1)">-</button>
+                        <input type="number" class="quantity-input" id="quantity" value="1.0" min="1" max="5" step="0.1">
+                        <button class="quantity-btn" onclick="changeQuantity(0.1)">+</button>
+                        <span>kg</span>
                     </div>
-                    <div class="product-info">
-                        <h3>Taze İstavrit Balığı</h3>
-                        <p class="product-description">Marmara Denizi'nden günlük avlanan taze istavrit</p>
-                        <div class="price">
-                            <span class="amount">₺450</span>
-                            <span class="unit">/ kg</span>
-                        </div>
-                        <div class="quantity-controls">
-                            <button class="qty-btn minus" onclick="changeQuantity('istavrit', -0.1)">-</button>
-                            <input type="number" id="qty-istavrit" class="qty-input" value="1" min="1" max="5" step="0.1" onchange="validateInput('istavrit')" onkeyup="validateInput('istavrit')">
-                            <span class="qty-unit">kg</span>
-                            <button class="qty-btn plus" onclick="changeQuantity('istavrit', 0.1)">+</button>
-                        </div>
-                        <button class="add-to-cart" data-product="istavrit" data-price="450">
-                            <span>Sepete Ekle</span>
-                        </button>
-                    </div>
+                    <button class="add-to-cart" onclick="addToCart()">
+                        <span>🛒</span>
+                        <span>Sepete Ekle</span>
+                    </button>
                 </div>
             </div>
         </div>
     </section>
-
-    <!-- Hakkımızda -->
-    <section id="hakkimizda" class="about">
+    
+    <section id="reviews" class="reviews">
         <div class="container">
-            <div class="about-content">
-                <div class="about-text">
-                    <h2>Denizden Sofranıza</h2>
-                    <p>Marmara Denizi'nden günlük avlanan en taze istavritleri sofralarınıza ulaştırıyoruz.</p>
-                    <p>Olta balıkçılığı ile her gün sabahın ilk ışıklarıyla avladığımız istavritler aynı gün içinde kapınıza kadar gelir.</p>
+            <h2 class="section-title">Müşteri Yorumları</h2>
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <div class="review-header">
+                        <span class="review-name">Ayşe H.</span>
+                        <span class="review-stars">⭐⭐⭐⭐⭐</span>
+                    </div>
+                    <p class="review-text">Balıklar gerçekten çok tazeydi, denizden yeni çıkmış gibiydi. Akşam yemeğinde kızarttık mis gibi koktu mutfak</p>
                 </div>
-                <div class="about-image">
-                    <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?w=600" alt="Balıkçı Teknesi">
+                <div class="review-card">
+                    <div class="review-header">
+                        <span class="review-name">Mehmet K.</span>
+                        <span class="review-stars">⭐⭐⭐⭐⭐</span>
+                    </div>
+                    <p class="review-text">Sabah sipariş verdim öğleden sonra geldi. Bu kadar hızlı beklemiyordum. Balıkların gözleri pırıl pırıldı</p>
+                </div>
+                <div class="review-card">
+                    <div class="review-header">
+                        <span class="review-name">Zeynep T.</span>
+                        <span class="review-stars">⭐⭐⭐⭐</span>
+                    </div>
+                    <p class="review-text">Fiyat biraz yüksek ama kalitesi belli oluyor. Pazar balıklarıyla kıyaslanamaz bile</p>
+                </div>
+                <div class="review-card">
+                    <div class="review-header">
+                        <span class="review-name">Ali O.</span>
+                        <span class="review-stars">⭐⭐⭐⭐⭐</span>
+                    </div>
+                    <p class="review-text">2 kilo aldım ailecek yedik. Çocuklar bile bayıldı, kılçığı az ve eti lezzetliydi. Tekrar alacağım</p>
                 </div>
             </div>
         </div>
     </section>
-
-    <!-- İletişim -->
-    <section id="iletisim" class="contact">
-        <div class="container">
-            <h2 class="section-title">İletişim</h2>
-            <div class="contact-wrapper">
-                <div class="contact-card whatsapp-card">
-                    <div class="contact-icon-wrapper">
-                        <i class="fab fa-whatsapp"></i>
-                    </div>
-                    <h3>WhatsApp İletişim</h3>
-                    <p class="contact-number">0539 983 49 53</p>
-                    <a href="https://wa.me/905399834953" class="whatsapp-cta" target="_blank">
-                        <i class="fab fa-whatsapp"></i>
-                        <span>Hemen Mesaj Gönder</span>
-                    </a>
-                </div>
-                <div class="contact-info-grid">
-                    <div class="info-card">
-                        <div class="info-icon">
-                            <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                        <h4>Adresimiz</h4>
-                        <p>İstanbul, Beyoğlu</p>
-                    </div>
-                    <div class="info-card">
-                        <div class="info-icon">
-                            <i class="fas fa-clock"></i>
-                        </div>
-                        <h4>Çalışma Saatleri</h4>
-                        <p class="hours">
-                            <span class="day">Hafta İçi:</span> 10:00 - 22:00<br>
-                            <span class="day">Hafta Sonu:</span> <span class="closed">Kapalı</span>
-                        </p>
-                    </div>
-                    <p style="text-align: center; color: #666;">Siparişleriniz ve sorularınız için bize WhatsApp üzerinden ulaşabilirsiniz.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Sepet Modal -->
-    <div id="cartModal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>Sepetiniz</h2>
-            <div id="cartItems"></div>
-            <div class="cart-total">
-                <strong>Toplam: </strong>
-                <span id="totalPrice">₺0.00</span>
-            </div>
-            <button class="checkout-button" onclick="sendToWhatsApp()">WhatsApp ile Sipariş Ver</button>
-        </div>
-    </div>
-
-
-    <!-- Footer -->
-    <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+    
+    <footer id="contact">
         <div class="container">
             <div class="footer-content">
-                <div class="footer-brand">
-                    <span class="fish-icon">🌊</span>
-                    <span>Taze İstavrit</span>
+                <div class="footer-section">
+                    <h3>İstanbul Taze İstavrit</h3>
+                    <p>Denizden sofranıza en taze ve kaliteli istavrit balıkları. Olta ile avlanmış, doğal ve sağlıklı.</p>
                 </div>
-                <p>&copy; 2025 <strong>İstanbul Taze İstavrit</strong> - Günlük Taze Balık. Tüm hakları saklıdır.</p>
+                <div class="footer-section">
+                    <h3>İletişim</h3>
+                    <ul>
+                        <li>📍 Adres: Beyoğlu, İstanbul</li>
+                        <li>📞 Tel: 0539 983 49 53</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Çalışma Saatleri</h3>
+                    <ul>
+                        <li>Hafta içi: 10:00-22:00</li>
+                        <li>Hafta sonu: Kapalı</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 İstanbul Taze İstavrit. Tüm hakları saklıdır.</p>
             </div>
         </div>
     </footer>
-
-    <script src="script.js"></script>
+    
+    <div class="modal-overlay" id="cartModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2 class="modal-title">Sepetiniz</h2>
+                <button class="modal-close" onclick="closeCart()">✕</button>
+            </div>
+            <div class="modal-body">
+                <div id="cartContent"></div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="toast" id="toast"></div>
+    
     <script>
-        // PWA Service Worker Registration
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/service-worker.js')
-                    .then(registration => {
-                        console.log('ServiceWorker registration successful');
-                        
-                        // Check for updates
-                        registration.addEventListener('updatefound', () => {
-                            const newWorker = registration.installing;
-                            newWorker.addEventListener('statechange', () => {
-                                if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
-                                    // New content available, refresh cache
-                                    newWorker.postMessage({ action: 'skipWaiting' });
-                                    window.location.reload();
-                                }
-                            });
-                        });
-                    })
-                    .catch(err => console.log('ServiceWorker registration failed:', err));
+        // Sepet verilerini saklama
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        
+        // Tema yönetimi
+        const initTheme = () => {
+            const savedTheme = localStorage.getItem('theme');
+            const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const theme = savedTheme || (systemPrefersDark ? 'dark' : 'light');
+            
+            document.documentElement.setAttribute('data-theme', theme);
+            updateThemeIcon(theme);
+        };
+        
+        const updateThemeIcon = (theme) => {
+            const themeToggle = document.getElementById('themeToggle');
+            themeToggle.textContent = theme === 'dark' ? '☀️' : '🌙';
+        };
+        
+        const toggleTheme = () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateThemeIcon(newTheme);
+        };
+        
+        // Miktar değiştirme fonksiyonları
+        const changeQuantity = (delta) => {
+            const input = document.getElementById('quantity');
+            let currentValue = parseFloat(input.value);
+            let newValue = currentValue + delta;
+            
+            // Min ve max kontrolleri
+            newValue = Math.max(1, Math.min(5, newValue));
+            
+            // 100 gram'a yuvarlama
+            newValue = Math.round(newValue * 10) / 10;
+            
+            input.value = newValue.toFixed(1);
+        };
+        
+        // Input validasyonu
+        const validateQuantityInput = () => {
+            const input = document.getElementById('quantity');
+            let value = parseFloat(input.value);
+            
+            if (isNaN(value)) {
+                value = 1;
+            }
+            
+            // Min ve max kontrolleri
+            value = Math.max(1, Math.min(5, value));
+            
+            // 100 gram'a yuvarlama
+            value = Math.round(value * 10) / 10;
+            
+            input.value = value.toFixed(1);
+        };
+        
+        // Sepete ürün ekleme
+        const addToCart = () => {
+            const quantity = parseFloat(document.getElementById('quantity').value);
+            
+            // Sepette var mı kontrol et
+            const existingItem = cart.find(item => item.id === 'istavrit');
+            
+            if (existingItem) {
+                existingItem.quantity = Math.min(5, existingItem.quantity + quantity);
+            } else {
+                cart.push({
+                    id: 'istavrit',
+                    name: 'Günlük Taze İstavrit',
+                    price: 450,
+                    quantity: quantity
+                });
+            }
+            
+            // LocalStorage'a kaydet
+            localStorage.setItem('cart', JSON.stringify(cart));
+            
+            // Badge'i güncelle
+            updateCartBadge();
+            
+            // Toast göster
+            showToast('Ürün sepete eklendi!');
+            
+            // Input'u sıfırla
+            document.getElementById('quantity').value = '1.0';
+        };
+        
+        // Sepet badge güncelleme
+        const updateCartBadge = () => {
+            const badge = document.getElementById('cartBadge');
+            const totalQuantity = cart.reduce((sum, item) => sum + item.quantity, 0);
+            
+            if (totalQuantity > 0) {
+                badge.textContent = totalQuantity.toFixed(1) + ' kg';
+                badge.classList.remove('hidden');
+            } else {
+                badge.classList.add('hidden');
+            }
+        };
+        
+        // Sepeti açma/kapama
+        const openCart = () => {
+            const modal = document.getElementById('cartModal');
+            modal.classList.add('active');
+            renderCart();
+        };
+        
+        const closeCart = () => {
+            const modal = document.getElementById('cartModal');
+            modal.classList.remove('active');
+        };
+        
+        // Sepet içeriğini render etme
+        const renderCart = () => {
+            const cartContent = document.getElementById('cartContent');
+            
+            if (cart.length === 0) {
+                cartContent.innerHTML = '<div class="cart-empty">Sepetiniz boş</div>';
+                return;
+            }
+            
+            let html = '';
+            let total = 0;
+            
+            cart.forEach(item => {
+                const itemTotal = item.price * item.quantity;
+                total += itemTotal;
+                
+                html += `
+                    <div class="cart-item">
+                        <div class="cart-item-image">🐟</div>
+                        <div class="cart-item-info">
+                            <div class="cart-item-name">${item.name}</div>
+                            <div class="cart-item-controls">
+                                <button class="cart-quantity-btn" onclick="updateCartItem('${item.id}', -0.1)">-</button>
+                                <span class="cart-quantity">${item.quantity.toFixed(1)} kg</span>
+                                <button class="cart-quantity-btn" onclick="updateCartItem('${item.id}', 0.1)">+</button>
+                            </div>
+                        </div>
+                        <div class="cart-item-price">${itemTotal.toFixed(2)} ₺</div>
+                    </div>
+                `;
             });
-        }
+            
+            html += `
+                <div class="cart-summary">
+                    <div class="cart-total">
+                        <span>Toplam:</span>
+                        <span>${total.toFixed(2)} ₺</span>
+                    </div>
+                    <div class="cart-note">* Teslimat ücreti WhatsApp'ta belirtilecektir</div>
+                    <div style="margin: 15px 0;">
+                        <input type="text" id="customerAddress" placeholder="Teslimat Adresi" style="width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid var(--border-color); border-radius: 4px; font-size: 14px;">
+                        <textarea id="customerNote" placeholder="Sipariş Notu (opsiyonel)" style="width: 100%; padding: 10px; border: 1px solid var(--border-color); border-radius: 4px; font-size: 14px; resize: vertical; min-height: 60px;"></textarea>
+                    </div>
+                    <div class="cart-actions">
+                        <button class="btn btn-clear" onclick="clearCart()">Sepeti Boşalt</button>
+                        <button class="btn btn-order" onclick="sendWhatsAppOrder()">
+                            <span>📱</span>
+                            <span>WhatsApp ile Sipariş Ver</span>
+                        </button>
+                    </div>
+                </div>
+            `;
+            
+            cartContent.innerHTML = html;
+        };
+        
+        // Sepetteki ürünü güncelleme
+        const updateCartItem = (id, delta) => {
+            const item = cart.find(i => i.id === id);
+            if (item) {
+                item.quantity = Math.max(1, Math.min(5, item.quantity + delta));
+                item.quantity = Math.round(item.quantity * 10) / 10;
+                
+                if (item.quantity < 1) {
+                    cart = cart.filter(i => i.id !== id);
+                }
+                
+                localStorage.setItem('cart', JSON.stringify(cart));
+                updateCartBadge();
+                renderCart();
+            }
+        };
+        
+        // Sepeti temizleme
+        const clearCart = () => {
+            if (confirm('Sepeti boşaltmak istediğinizden emin misiniz?')) {
+                cart = [];
+                localStorage.setItem('cart', JSON.stringify(cart));
+                updateCartBadge();
+                renderCart();
+                showToast('Sepet temizlendi');
+            }
+        };
+        
+        // WhatsApp sipariş gönderme
+        const sendWhatsAppOrder = () => {
+            if (cart.length === 0) {
+                showToast('Sepetiniz boş!');
+                return;
+            }
+            
+            const address = document.getElementById('customerAddress').value.trim();
+            const note = document.getElementById('customerNote').value.trim();
+            
+            if (!address) {
+                showToast('Lütfen teslimat adresinizi girin!');
+                document.getElementById('customerAddress').focus();
+                return;
+            }
+            
+            let message = 'Merhaba, aşağıdaki siparişi vermek istiyorum:\n\n';
+            let total = 0;
+            
+            cart.forEach(item => {
+                const itemTotal = item.price * item.quantity;
+                total += itemTotal;
+                message += `• ${item.name}: ${item.quantity.toFixed(1)} kg - ${itemTotal.toFixed(2)} ₺\n`;
+            });
+            
+            message += `\nToplam: ${total.toFixed(2)} ₺`;
+            message += `\n\n📍 Teslimat Adresi: ${address}`;
+            
+            if (note) {
+                message += `\n\n📝 Not: ${note}`;
+            }
+            
+            const phoneNumber = '905399834953';
+            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+            
+            window.open(whatsappUrl, '_blank');
+        };
+        
+        // Toast bildirimi
+        const showToast = (message) => {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.classList.add('show');
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        };
+        
+        // Header scroll efekti
+        const handleScroll = () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        };
+        
+        // Mobil menü toggle
+        const toggleMobileMenu = () => {
+            const navMenu = document.getElementById('navMenu');
+            navMenu.classList.toggle('active');
+        };
+        
+        // Mobil menü linklerine tıklandığında menüyü kapat
+        const closeMobileMenuOnClick = () => {
+            const navMenu = document.getElementById('navMenu');
+            const navLinks = navMenu.querySelectorAll('a');
+            
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    navMenu.classList.remove('active');
+                });
+            });
+        };
+        
+        // Sayfa yüklendiğinde
+        document.addEventListener('DOMContentLoaded', () => {
+            // Tema başlat
+            initTheme();
+            
+            // Sepet badge güncelle
+            updateCartBadge();
+            
+            // Event listener'ları ekle
+            document.getElementById('themeToggle').addEventListener('click', toggleTheme);
+            document.getElementById('cartBtn').addEventListener('click', openCart);
+            document.getElementById('mobileMenuToggle').addEventListener('click', toggleMobileMenu);
+            document.getElementById('quantity').addEventListener('change', validateQuantityInput);
+            
+            // Scroll event
+            window.addEventListener('scroll', handleScroll);
+            
+            // Modal dışına tıklama
+            document.getElementById('cartModal').addEventListener('click', (e) => {
+                if (e.target.id === 'cartModal') {
+                    closeCart();
+                }
+            });
+            
+            // Mobil menü linkleri
+            closeMobileMenuOnClick();
+            
+            // Animasyonlar için Intersection Observer
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -100px 0px'
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+            
+            // Animasyon eklenecek elementler
+            document.querySelectorAll('.feature-card, .review-card').forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(30px)';
+                el.style.transition = 'all 0.6s ease';
+                observer.observe(el);
+            });
+        });
     </script>
 </body>
 </html>
