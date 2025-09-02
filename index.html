@@ -3,8 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="İstanbul Taze İstavrit - Denizden sofranıza en taze istavrit">
-    <title>İstanbul Taze İstavrit - En Taze Balık Satışı</title>
+    <meta name="description" content="İstanbul Taze İstavrit - İstanbul'da en taze istavrit balığı satışı. Günlük taze, olta ile avlanmış istavrit siparişi. İstanbul istavrit, taze balık, balık siparişi.">
+    <meta name="keywords" content="istanbul istavrit, İstanbul istavrit, istanbul taze istavrit, İstanbul Taze İstavrit, istavrit balığı, taze istavrit, istanbul balık, istanbul taze balık, istavrit siparişi, online balık siparişi, günlük taze balık, olta balığı, istanbul balık satış, istavrit fiyat, istavrit istanbul, balık satış istanbul">
+    <meta name="author" content="İstanbul Taze İstavrit">
+    <meta property="og:title" content="İstanbul Taze İstavrit - En Taze Balık Satışı">
+    <meta property="og:description" content="İstanbul'da günlük taze, olta ile avlanmış istavrit balığı. Hızlı teslimat, en taze balık garantisi.">
+    <meta property="og:image" content="images/Logo.png">
+    <meta property="og:url" content="https://istanbultazeistavrit.netlify.app">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="İstanbul Taze İstavrit">
+    <meta name="twitter:description" content="İstanbul'da en taze istavrit balığı satışı">
+    <meta name="twitter:image" content="images/Logo.png">
+    <link rel="icon" type="image/png" href="images/Logo.png">
+    <link rel="apple-touch-icon" href="images/Logo.png">
+    <link rel="canonical" href="https://istanbultazeistavrit.netlify.app">
+    <title>İstanbul İstavrit - İstanbul Taze İstavrit Balığı Satışı | Online Sipariş</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
@@ -1120,7 +1134,7 @@
                 // Maksimum 3kg kontrolü
                 const newQuantity = existingItem.quantity + quantity;
                 if (newQuantity > 3) {
-                    showToast('Maksimum 3kg sipariş verebilirsiniz!');
+                    showToast('Max 3kg!');
                     return;
                 }
                 existingItem.quantity = newQuantity;
@@ -1140,7 +1154,7 @@
             updateCartBadge();
             
             // Toast göster - miktar bilgisiyle
-            showToast(`${quantity} kg eklendi`);
+            showToast(`+${quantity}kg`);
             
             // Input'u sıfırla
             document.getElementById('quantity').value = '1.0';
@@ -1251,14 +1265,14 @@
                 localStorage.setItem('cart', JSON.stringify(cart));
                 updateCartBadge();
                 renderCart();
-                showToast('Sepet temizlendi');
+                showToast('Temizlendi');
             }
         };
         
         // WhatsApp sipariş gönderme
         const sendWhatsAppOrder = () => {
             if (cart.length === 0) {
-                showToast('Sepetiniz boş!');
+                showToast('Sepet boş!');
                 return;
             }
             
@@ -1266,7 +1280,7 @@
             const note = document.getElementById('customerNote').value.trim();
             
             if (!address) {
-                showToast('Lütfen teslimat adresinizi girin!');
+                showToast('Adres gerekli!');
                 document.getElementById('customerAddress').focus();
                 return;
             }
