@@ -75,7 +75,6 @@
         }
         
         header.scrolled {
-            padding: 10px 0;
             box-shadow: var(--shadow-md);
         }
         
@@ -83,8 +82,12 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 10px 0;
-            transition: var(--transition);
+            padding: 15px 0;
+            transition: padding 0.3s ease;
+        }
+        
+        header.scrolled nav {
+            padding: 8px 0;
         }
         
         .logo {
