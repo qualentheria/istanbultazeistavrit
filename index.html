@@ -748,14 +748,19 @@
             position: fixed;
             bottom: 30px;
             right: 30px;
-            background-color: var(--success-color);
+            background: var(--danger-color);
             color: white;
-            padding: 15px 25px;
+            padding: 12px 20px;
             border-radius: 50px;
             box-shadow: var(--shadow-lg);
             transform: translateX(400px);
             transition: transform 0.3s ease;
             z-index: 3000;
+            font-size: 0.9rem;
+            white-space: nowrap;
+            max-width: 200px;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
         
         .toast.show {
@@ -944,7 +949,7 @@
             <h2 class="section-title">Taze İstavrit Balığı</h2>
             <div class="product-card">
                 <div class="product-image">
-                    <img src="images/Balık.png" alt="Taze İstavrit" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px;">
+                    <img src="images/Balık.png" alt="Taze İstavrit" style="width: 100%; height: 100%; object-fit: contain; border-radius: 8px;">
                 </div>
                 <div class="product-info">
                     <h3 class="product-title">Günlük Taze İstavrit</h3>
@@ -952,7 +957,7 @@
                     <div class="product-price">400 ₺/kg</div>
                     <div class="quantity-selector">
                         <button class="quantity-btn" onclick="changeQuantity(-0.1)">-</button>
-                        <input type="number" class="quantity-input" id="quantity" value="1.0" min="1" max="5" step="0.1">
+                        <input type="number" class="quantity-input" id="quantity" value="1.0" min="0.1" max="3" step="0.1">
                         <button class="quantity-btn" onclick="changeQuantity(0.1)">+</button>
                         <span>kg</span>
                     </div>
@@ -969,13 +974,6 @@
         <div class="container">
             <h2 class="section-title">Müşteri Yorumları</h2>
             <div class="reviews-grid">
-                <div class="review-card">
-                    <div class="review-header">
-                        <span class="review-name">Ayşe H.</span>
-                        <span class="review-stars">⭐⭐⭐⭐⭐</span>
-                    </div>
-                    <p class="review-text">Balıklar gerçekten çok tazeydi, denizden yeni çıkmış gibiydi. Akşam yemeğinde kızarttık mis gibi koktu mutfak</p>
-                </div>
                 <div class="review-card">
                     <div class="review-header">
                         <span class="review-name">Mehmet K.</span>
@@ -1084,8 +1082,8 @@
             let currentValue = parseFloat(input.value);
             let newValue = currentValue + delta;
             
-            // Min ve max kontrolleri
-            newValue = Math.max(1, Math.min(5, newValue));
+            // Min ve max kontrolleri - maksimum 3kg
+            newValue = Math.max(0.1, Math.min(3, newValue));
             
             // 100 gram'a yuvarlama
             newValue = Math.round(newValue * 10) / 10;
@@ -1102,8 +1100,8 @@
                 value = 1;
             }
             
-            // Min ve max kontrolleri
-            value = Math.max(1, Math.min(5, value));
+            // Min ve max kontrolleri - maksimum 3kg
+            value = Math.max(0.1, Math.min(3, value));
             
             // 100 gram'a yuvarlama
             value = Math.round(value * 10) / 10;
@@ -1119,7 +1117,13 @@
             const existingItem = cart.find(item => item.id === 'istavrit');
             
             if (existingItem) {
-                existingItem.quantity = Math.min(5, existingItem.quantity + quantity);
+                // Maksimum 3kg kontrolü
+                const newQuantity = existingItem.quantity + quantity;
+                if (newQuantity > 3) {
+                    showToast('Maksimum 3kg sipariş verebilirsiniz!');
+                    return;
+                }
+                existingItem.quantity = newQuantity;
             } else {
                 cart.push({
                     id: 'istavrit',
@@ -1135,8 +1139,8 @@
             // Badge'i güncelle
             updateCartBadge();
             
-            // Toast göster
-            showToast('Ürün sepete eklendi!');
+            // Toast göster - miktar bilgisiyle
+            showToast(`${quantity} kg eklendi`);
             
             // Input'u sıfırla
             document.getElementById('quantity').value = '1.0';
