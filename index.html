@@ -147,26 +147,48 @@
         .theme-toggle {
             background: none;
             border: none;
-            font-size: 1.5rem;
             cursor: pointer;
             transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px;
+            border-radius: 50%;
+            color: var(--text-color);
         }
         
         .theme-toggle:hover {
-            transform: rotate(180deg);
+            background-color: var(--bg-secondary);
+            transform: rotate(15deg);
+        }
+        
+        .theme-icon {
+            width: 24px;
+            height: 24px;
         }
         
         .cart-btn {
             position: relative;
             background: none;
             border: none;
-            font-size: 1.5rem;
             cursor: pointer;
             transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px;
+            border-radius: 50%;
+            color: var(--text-color);
         }
         
         .cart-btn:hover {
-            transform: scale(1.1);
+            background-color: var(--bg-secondary);
+            transform: scale(1.05);
+        }
+        
+        .cart-btn svg {
+            width: 24px;
+            height: 24px;
         }
         
         .cart-badge {
@@ -867,9 +889,18 @@
                 <li><a href="#contact">İletişim</a></li>
             </ul>
             <div class="nav-actions">
-                <button class="theme-toggle" id="themeToggle">🌙</button>
+                <button class="theme-toggle" id="themeToggle">
+                    <svg class="theme-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path class="sun-icon" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                        <path class="moon-icon" d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" style="display: none;"></path>
+                    </svg>
+                </button>
                 <button class="cart-btn" id="cartBtn">
-                    🛒
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="9" cy="21" r="1"></circle>
+                        <circle cx="20" cy="21" r="1"></circle>
+                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                    </svg>
                     <span class="cart-badge hidden" id="cartBadge">0</span>
                 </button>
                 <button class="mobile-menu-toggle" id="mobileMenuToggle">☰</button>
@@ -1027,8 +1058,15 @@
         };
         
         const updateThemeIcon = (theme) => {
-            const themeToggle = document.getElementById('themeToggle');
-            themeToggle.textContent = theme === 'dark' ? '☀️' : '🌙';
+            const sunIcon = document.querySelector('.sun-icon');
+            const moonIcon = document.querySelector('.moon-icon');
+            if (theme === 'dark') {
+                sunIcon.style.display = 'block';
+                moonIcon.style.display = 'none';
+            } else {
+                sunIcon.style.display = 'none';
+                moonIcon.style.display = 'block';
+            }
         };
         
         const toggleTheme = () => {
