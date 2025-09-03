@@ -231,6 +231,7 @@
             border: none;
             font-size: 1.5rem;
             cursor: pointer;
+            color: var(--text-color);
         }
         
         .hero {
@@ -970,9 +971,9 @@
                     <p class="product-description">Olta ile avlanmış, temizlenmemiş, en doğal haliyle</p>
                     <div class="product-price">400 ₺/kg</div>
                     <div class="quantity-selector">
-                        <button class="quantity-btn" onclick="changeQuantity(-0.1)">-</button>
-                        <input type="number" class="quantity-input" id="quantity" value="1.0" min="0.1" max="3" step="0.1">
-                        <button class="quantity-btn" onclick="changeQuantity(0.1)">+</button>
+                        <button class="quantity-btn" onclick="changeQuantity(-0.5)">-</button>
+                        <input type="number" class="quantity-input" id="quantity" value="1.0" min="1" max="5" step="0.5">
+                        <button class="quantity-btn" onclick="changeQuantity(0.5)">+</button>
                         <span>kg</span>
                     </div>
                     <button class="add-to-cart" onclick="addToCart()">
@@ -1096,11 +1097,11 @@
             let currentValue = parseFloat(input.value);
             let newValue = currentValue + delta;
             
-            // Min ve max kontrolleri - maksimum 3kg
-            newValue = Math.max(0.1, Math.min(3, newValue));
+            // Min ve max kontrolleri - minimum 1kg, maksimum 5kg
+            newValue = Math.max(1, Math.min(5, newValue));
             
-            // 100 gram'a yuvarlama
-            newValue = Math.round(newValue * 10) / 10;
+            // 500 gram'a yuvarlama
+            newValue = Math.round(newValue * 2) / 2;
             
             input.value = newValue.toFixed(1);
         };
@@ -1111,14 +1112,14 @@
             let value = parseFloat(input.value);
             
             if (isNaN(value)) {
-                value = 1;
+                value = 1.0;
             }
             
-            // Min ve max kontrolleri - maksimum 3kg
-            value = Math.max(0.1, Math.min(3, value));
+            // Min ve max kontrolleri - minimum 1kg, maksimum 5kg
+            value = Math.max(1, Math.min(5, value));
             
-            // 100 gram'a yuvarlama
-            value = Math.round(value * 10) / 10;
+            // 500 gram'a yuvarlama
+            value = Math.round(value * 2) / 2;
             
             input.value = value.toFixed(1);
         };
@@ -1131,10 +1132,10 @@
             const existingItem = cart.find(item => item.id === 'istavrit');
             
             if (existingItem) {
-                // Maksimum 3kg kontrolü
+                // Maksimum 5kg kontrolü
                 const newQuantity = existingItem.quantity + quantity;
-                if (newQuantity > 3) {
-                    showToast('Max 3kg!');
+                if (newQuantity > 5) {
+                    showToast('Max 5kg!');
                     return;
                 }
                 existingItem.quantity = newQuantity;
