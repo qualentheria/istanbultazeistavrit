@@ -207,8 +207,8 @@
         
         .cart-badge {
             position: absolute;
-            top: -5px;
-            right: -5px;
+            top: -8px;
+            right: -8px;
             background-color: var(--danger-color);
             color: white;
             border-radius: 50%;
@@ -1059,7 +1059,7 @@
     <div class="modal-overlay" id="cartModal">
         <div class="modal">
             <div class="modal-header">
-                <h2 class="modal-title">Sepetiniz <span class="cart-modal-badge" id="cartModalBadge">0</span></h2>
+                <h2 class="modal-title">Sepetiniz</h2>
                 <button class="modal-close" onclick="closeCart()">✕</button>
             </div>
             <div class="modal-body">
@@ -1200,17 +1200,9 @@
                     const text = totalQuantity.toFixed(1) + 'kg';
                     badge.textContent = text;
                     badge.classList.remove('hidden');
-                    
-                    if (modalBadge) {
-                        modalBadge.textContent = text;
-                    }
                 } else {
                     badge.textContent = '0';
                     badge.classList.add('hidden');
-                    
-                    if (modalBadge) {
-                        modalBadge.textContent = '0';
-                    }
                 }
             } catch (error) {
                 console.error('Error updating cart badge:', error);
