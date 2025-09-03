@@ -1181,25 +1181,39 @@
         
         // Sepet badge güncelleme
         const updateCartBadge = () => {
-            const badge = document.getElementById('cartBadge');
-            const modalBadge = document.getElementById('cartModalBadge');
-            
-            if (!badge) return; // Badge elementi yoksa çık
-            
-            const totalQuantity = cart.reduce((sum, item) => sum + item.quantity, 0);
-            
-            if (totalQuantity > 0) {
-                const text = totalQuantity.toFixed(1) + 'kg';
-                badge.textContent = text;
-                badge.classList.remove('hidden');
-                if (modalBadge) {
-                    modalBadge.textContent = text;
+            try {
+                const badge = document.getElementById('cartBadge');
+                const modalBadge = document.getElementById('cartModalBadge');
+                
+                // Badge yoksa sessizce çık
+                if (!badge) {
+                    // DOM henüz hazır değilse, kısa bir süre sonra tekrar dene
+                    if (document.readyState !== 'complete') {
+                        setTimeout(updateCartBadge, 100);
+                    }
+                    return;
                 }
-            } else {
-                badge.classList.add('hidden');
-                if (modalBadge) {
-                    modalBadge.textContent = '0';
+                
+                const totalQuantity = cart.reduce((sum, item) => sum + item.quantity, 0);
+                
+                if (totalQuantity > 0) {
+                    const text = totalQuantity.toFixed(1) + 'kg';
+                    badge.textContent = text;
+                    badge.classList.remove('hidden');
+                    
+                    if (modalBadge) {
+                        modalBadge.textContent = text;
+                    }
+                } else {
+                    badge.textContent = '0';
+                    badge.classList.add('hidden');
+                    
+                    if (modalBadge) {
+                        modalBadge.textContent = '0';
+                    }
                 }
+            } catch (error) {
+                console.error('Error updating cart badge:', error);
             }
         };
         
