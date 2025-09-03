@@ -765,15 +765,15 @@
             right: 30px;
             background: var(--danger-color);
             color: white;
-            padding: 12px 20px;
+            padding: 10px 16px;
             border-radius: 50px;
             box-shadow: var(--shadow-lg);
             transform: translateX(400px);
             transition: transform 0.3s ease;
             z-index: 3000;
-            font-size: 0.9rem;
+            font-size: 0.75rem;
             white-space: nowrap;
-            max-width: 200px;
+            max-width: 150px;
             overflow: hidden;
             text-overflow: ellipsis;
         }
@@ -971,9 +971,9 @@
                     <p class="product-description">Olta ile avlanmış, temizlenmemiş, en doğal haliyle</p>
                     <div class="product-price">400 ₺/kg</div>
                     <div class="quantity-selector">
-                        <button class="quantity-btn" onclick="changeQuantity(-0.5)">-</button>
-                        <input type="number" class="quantity-input" id="quantity" value="1.0" min="1" max="5" step="0.5">
-                        <button class="quantity-btn" onclick="changeQuantity(0.5)">+</button>
+                        <button class="quantity-btn" onclick="changeQuantity(-0.1)">-</button>
+                        <input type="number" class="quantity-input" id="quantity" value="1.0" min="1" max="3" step="0.1">
+                        <button class="quantity-btn" onclick="changeQuantity(0.1)">+</button>
                         <span>kg</span>
                     </div>
                     <button class="add-to-cart" onclick="addToCart()">
@@ -1025,7 +1025,7 @@
                     <h3>İletişim</h3>
                     <ul>
                         <li>📍 Adres: Beyoğlu, İstanbul</li>
-                        <li>📞 Tel: 0539 983 49 53</li>
+                        <li>📞 Tel: <a href="tel:05399834953" style="color: #0066CC; text-decoration: none;">0539 983 49 53</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
@@ -1097,11 +1097,11 @@
             let currentValue = parseFloat(input.value);
             let newValue = currentValue + delta;
             
-            // Min ve max kontrolleri - minimum 1kg, maksimum 5kg
-            newValue = Math.max(1, Math.min(5, newValue));
+            // Min ve max kontrolleri - minimum 1kg, maksimum 3kg
+            newValue = Math.max(1, Math.min(3, newValue));
             
-            // 500 gram'a yuvarlama
-            newValue = Math.round(newValue * 2) / 2;
+            // 100 gram'a yuvarlama
+            newValue = Math.round(newValue * 10) / 10;
             
             input.value = newValue.toFixed(1);
         };
@@ -1115,11 +1115,11 @@
                 value = 1.0;
             }
             
-            // Min ve max kontrolleri - minimum 1kg, maksimum 5kg
-            value = Math.max(1, Math.min(5, value));
+            // Min ve max kontrolleri - minimum 1kg, maksimum 3kg
+            value = Math.max(1, Math.min(3, value));
             
-            // 500 gram'a yuvarlama
-            value = Math.round(value * 2) / 2;
+            // 100 gram'a yuvarlama
+            value = Math.round(value * 10) / 10;
             
             input.value = value.toFixed(1);
         };
@@ -1132,10 +1132,10 @@
             const existingItem = cart.find(item => item.id === 'istavrit');
             
             if (existingItem) {
-                // Maksimum 5kg kontrolü
+                // Maksimum 3kg kontrolü
                 const newQuantity = existingItem.quantity + quantity;
-                if (newQuantity > 5) {
-                    showToast('Max 5kg!');
+                if (newQuantity > 3) {
+                    showToast('Max 3kg!');
                     return;
                 }
                 existingItem.quantity = newQuantity;
