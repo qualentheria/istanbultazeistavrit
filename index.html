@@ -935,6 +935,7 @@
                         <circle cx="20" cy="21" r="1"></circle>
                         <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
                     </svg>
+                    <span class="cart-badge hidden" id="cartBadge">0</span>
                 </button>
                 <button class="mobile-menu-toggle" id="mobileMenuToggle">☰</button>
             </div>
@@ -1105,7 +1106,7 @@
         };
         
         // Miktar değiştirme fonksiyonları
-        const changeQuantity = (delta) => {
+        window.changeQuantity = (delta) => {
             const input = document.getElementById('quantity');
             let currentValue = parseFloat(input.value);
             let newValue = currentValue + delta;
@@ -1122,6 +1123,7 @@
         // Input validasyonu
         const validateQuantityInput = () => {
             const input = document.getElementById('quantity');
+            if (!input) return;
             let value = parseFloat(input.value);
             
             if (isNaN(value)) {
@@ -1138,7 +1140,7 @@
         };
         
         // Sepete ürün ekleme
-        const addToCart = () => {
+        window.addToCart = () => {
             const quantity = parseFloat(document.getElementById('quantity').value);
             
             // Sepette var mı kontrol et
@@ -1171,13 +1173,19 @@
             showToast(`+${quantity}kg`);
             
             // Input'u sıfırla
-            document.getElementById('quantity').value = '1.0';
+            const quantityInput = document.getElementById('quantity');
+            if (quantityInput) {
+                quantityInput.value = '1.0';
+            }
         };
         
         // Sepet badge güncelleme
         const updateCartBadge = () => {
             const badge = document.getElementById('cartBadge');
             const modalBadge = document.getElementById('cartModalBadge');
+            
+            if (!badge) return; // Badge elementi yoksa çık
+            
             const totalQuantity = cart.reduce((sum, item) => sum + item.quantity, 0);
             
             if (totalQuantity > 0) {
@@ -1198,13 +1206,17 @@
         // Sepeti açma/kapama
         const openCart = () => {
             const modal = document.getElementById('cartModal');
-            modal.classList.add('active');
-            renderCart();
+            if (modal) {
+                modal.classList.add('active');
+                renderCart();
+            }
         };
         
-        const closeCart = () => {
+        window.closeCart = () => {
             const modal = document.getElementById('cartModal');
-            modal.classList.remove('active');
+            if (modal) {
+                modal.classList.remove('active');
+            }
         };
         
         // Sepet içeriğini render etme
@@ -1264,7 +1276,7 @@
         };
         
         // Sepetteki ürünü güncelleme
-        const updateCartItem = (id, delta) => {
+        window.updateCartItem = (id, delta) => {
             const item = cart.find(i => i.id === id);
             if (item) {
                 item.quantity = Math.max(1, Math.min(3, item.quantity + delta));
@@ -1281,7 +1293,7 @@
         };
         
         // Sepeti temizleme
-        const clearCart = () => {
+        window.clearCart = () => {
             if (confirm('Sepeti boşaltmak istediğinizden emin misiniz?')) {
                 cart = [];
                 localStorage.setItem('cart', JSON.stringify(cart));
@@ -1292,7 +1304,7 @@
         };
         
         // WhatsApp sipariş gönderme
-        const sendWhatsAppOrder = () => {
+        window.sendWhatsAppOrder = () => {
             if (cart.length === 0) {
                 showToast('Sepet boş!');
                 return;
@@ -1343,6 +1355,8 @@
         // Header scroll efekti
         const handleScroll = () => {
             const header = document.getElementById('header');
+            if (!header) return;
+            
             if (window.scrollY > 50) {
                 header.classList.add('scrolled');
             } else {
@@ -1353,12 +1367,16 @@
         // Mobil menü toggle
         const toggleMobileMenu = () => {
             const navMenu = document.getElementById('navMenu');
-            navMenu.classList.toggle('active');
+            if (navMenu) {
+                navMenu.classList.toggle('active');
+            }
         };
         
         // Mobil menü linklerine tıklandığında menüyü kapat
         const closeMobileMenuOnClick = () => {
             const navMenu = document.getElementById('navMenu');
+            if (!navMenu) return;
+            
             const navLinks = navMenu.querySelectorAll('a');
             
             navLinks.forEach(link => {
@@ -1377,20 +1395,28 @@
             updateCartBadge();
             
             // Event listener'ları ekle
-            document.getElementById('themeToggle').addEventListener('click', toggleTheme);
-            document.getElementById('cartBtn').addEventListener('click', openCart);
-            document.getElementById('mobileMenuToggle').addEventListener('click', toggleMobileMenu);
-            document.getElementById('quantity').addEventListener('change', validateQuantityInput);
+            const themeToggle = document.getElementById('themeToggle');
+            const cartBtn = document.getElementById('cartBtn');
+            const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+            const quantityInput = document.getElementById('quantity');
+            
+            if (themeToggle) themeToggle.addEventListener('click', toggleTheme);
+            if (cartBtn) cartBtn.addEventListener('click', openCart);
+            if (mobileMenuToggle) mobileMenuToggle.addEventListener('click', toggleMobileMenu);
+            if (quantityInput) quantityInput.addEventListener('change', validateQuantityInput);
             
             // Scroll event
             window.addEventListener('scroll', handleScroll);
             
             // Modal dışına tıklama
-            document.getElementById('cartModal').addEventListener('click', (e) => {
-                if (e.target.id === 'cartModal') {
-                    closeCart();
-                }
-            });
+            const cartModal = document.getElementById('cartModal');
+            if (cartModal) {
+                cartModal.addEventListener('click', (e) => {
+                    if (e.target.id === 'cartModal') {
+                        closeCart();
+                    }
+                });
+            }
             
             // Mobil menü linkleri
             closeMobileMenuOnClick();
