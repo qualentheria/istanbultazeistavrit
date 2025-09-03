@@ -225,6 +225,20 @@
             display: none;
         }
         
+        .cart-modal-badge {
+            background-color: var(--danger-color);
+            color: white;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            font-weight: 600;
+            margin-left: 10px;
+        }
+        
         .mobile-menu-toggle {
             display: none;
             background: none;
@@ -921,7 +935,6 @@
                         <circle cx="20" cy="21" r="1"></circle>
                         <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
                     </svg>
-                    <span class="cart-badge hidden" id="cartBadge">0</span>
                 </button>
                 <button class="mobile-menu-toggle" id="mobileMenuToggle">☰</button>
             </div>
@@ -1022,7 +1035,7 @@
                     <p>Denizden sofranıza en taze ve kaliteli istavrit balıkları. Olta ile avlanmış, doğal ve sağlıklı.</p>
                 </div>
                 <div class="footer-section">
-                    <h3>İletişim</h3>
+                    <h2>Sepetim</h2>
                     <ul>
                         <li>📍 Adres: Beyoğlu, İstanbul</li>
                         <li>📞 Tel: <a href="tel:05399834953" style="color: #0066CC; text-decoration: none;">0539 983 49 53</a></li>
@@ -1045,7 +1058,7 @@
     <div class="modal-overlay" id="cartModal">
         <div class="modal">
             <div class="modal-header">
-                <h2 class="modal-title">Sepetiniz</h2>
+                <h2 class="modal-title">Sepetiniz <span class="cart-modal-badge" id="cartModalBadge">0</span></h2>
                 <button class="modal-close" onclick="closeCart()">✕</button>
             </div>
             <div class="modal-body">
@@ -1164,13 +1177,21 @@
         // Sepet badge güncelleme
         const updateCartBadge = () => {
             const badge = document.getElementById('cartBadge');
+            const modalBadge = document.getElementById('cartModalBadge');
             const totalQuantity = cart.reduce((sum, item) => sum + item.quantity, 0);
             
             if (totalQuantity > 0) {
-                badge.textContent = totalQuantity.toFixed(1) + ' kg';
+                const text = totalQuantity.toFixed(1) + 'kg';
+                badge.textContent = text;
                 badge.classList.remove('hidden');
+                if (modalBadge) {
+                    modalBadge.textContent = text;
+                }
             } else {
                 badge.classList.add('hidden');
+                if (modalBadge) {
+                    modalBadge.textContent = '0';
+                }
             }
         };
         
@@ -1246,7 +1267,7 @@
         const updateCartItem = (id, delta) => {
             const item = cart.find(i => i.id === id);
             if (item) {
-                item.quantity = Math.max(1, Math.min(5, item.quantity + delta));
+                item.quantity = Math.max(1, Math.min(3, item.quantity + delta));
                 item.quantity = Math.round(item.quantity * 10) / 10;
                 
                 if (item.quantity < 1) {
